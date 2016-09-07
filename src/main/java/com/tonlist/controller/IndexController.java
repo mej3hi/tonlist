@@ -10,7 +10,7 @@ public class IndexController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     String index(ModelMap model){
-		model.put("serverTime", "Þetta tokst, motherfucker!!!");
+		model.put("serverTime", "Farðu í rassgat!");
 		
         return "index";
     }
