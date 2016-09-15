@@ -2,8 +2,6 @@
 # Created by https://www.gitignore.io/api/java,maven,eclipse,windows,linux,osx
 
 ### Maven ###
-*/target/*
-*/target/**
 target/
 pom.xml.tag
 pom.xml.releaseBackup
