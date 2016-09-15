@@ -6,7 +6,16 @@
   <body>
     <div th:fragment="content">
     
+    <a th:href="@{/index2}">Index2</a>
     
+	<div th:if="${#httpServletRequest.remoteUser}"> <!-- if customer is not anonymous-->
+   		<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	</div>
+	
+	<div th:unless="${#httpServletRequest.remoteUser}"> <!-- if customer is anonymous(logged in)-->
+   		<div>Logaði þér inn auli</div>
+	</div>
+
 	<span th:text="${serverTime}" />
       
     </div>

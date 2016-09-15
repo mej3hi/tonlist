@@ -18,10 +18,12 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
             registry.addResourceHandler("/webjars/**").addResourceLocations(
                     "classpath:/META-INF/resources/webjars/");
         }
-        if (!registry.hasMappingForPattern("/**")) {
+       if (!registry.hasMappingForPattern("/**")) {
             registry.addResourceHandler("/**").addResourceLocations(
             		"classpath:/");
         }
+        
     }
+    
    
 }

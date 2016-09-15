@@ -15,4 +15,11 @@ public class IndexController {
         return "index";
     }
  
+	@RequestMapping(value = "/index2", method = RequestMethod.GET)
+    String index2(ModelMap model){
+		//model.put("serverTime", "Er farinn í rasgat 2");
+		
+        return "index2";
+    }
+ 
 }
