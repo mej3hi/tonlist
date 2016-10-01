@@ -1,5 +1,6 @@
 package com.tonlist.support;
 
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -21,9 +22,8 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
        if (!registry.hasMappingForPattern("/**")) {
             registry.addResourceHandler("/**").addResourceLocations(
             		"classpath:/");
-        }
-        
+        }      
     }
-    
-   
+  
+	
 }

@@ -1,6 +1,6 @@
 .form-signin
 {
-    max-width: 330px;
+
     padding: 15px;
     margin: 0 auto;
 }
@@ -53,10 +53,7 @@
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-.need-help
-{
-    margin-top: 10px;
-}
+
 .new-account
 {
     display: block;
