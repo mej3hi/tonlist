@@ -16,7 +16,7 @@
 			                		<span class="input-group-addon">
 										<i class="glyphicon glyphicon-user"></i>
 									</span> 
-				               		<input type="text" th:field="*{name}" th:value="${name}" placeholder="Enter your Name" class="form-control"  />
+				               		<input type="text" th:field="*{name}"  placeholder="Enter your Name" class="form-control"  />
 				               	</div>
 				               	<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 			               	</div>
@@ -26,7 +26,7 @@
 			               			<span class="input-group-addon">
 			               				<i class="glyphicon glyphicon-envelope"></i>
 			               			</span>	
-		                			<input type="email" th:field="*{email}" th:value="${email}" placeholder="Enter your Email" class="form-control" />
+		                			<input type="email" th:field="*{email}"  placeholder="Enter your Email" class="form-control" />
 			                	</div>
 		                		<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 			                </div>	
@@ -36,7 +36,7 @@
 			               			<span class="input-group-addon">
 			               				<i class="glyphicon glyphicon-user"></i>
 			               			</span>	
-		                			<input type="text" th:field="*{username}" th:value="${username}" placeholder="Enter your Username" class="form-control" />
+		                			<input type="text" th:field="*{username}"  placeholder="Enter your Username" class="form-control" />
 			                	</div>
 		                		<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
 			                </div>
