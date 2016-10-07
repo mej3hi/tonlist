@@ -40,6 +40,10 @@ public class SignUpController {
         
         if (bindingResult.hasErrors()) {
         	
+        	model.addAttribute("name",userForm.getUsername());
+        	model.addAttribute("email",userForm.getEmail());
+        	model.addAttribute("username",userForm.getUsername());
+        	
             return "signUp";
         }
 
