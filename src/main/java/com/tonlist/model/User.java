@@ -53,23 +53,24 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
     
-	/*public String getResetPasswordToken() {
-		return resetPasswordToken;
-	}
-
-	public void setResetPasswordToken(String resetPasswordToken) {
-		this.resetPasswordToken = resetPasswordToken;
-	}*/
-	
-	/*public String getResetPasswordExpires() {
-		return resetPasswordExpires;
-	}
-
-	public void setResetPasswordExpires(String resetPasswordExpires) {
-		this.resetPasswordExpires = resetPasswordExpires;
-	}*/
     
-    public String getName() {
+    public String getResetpasswordtoken() {
+		return resetpasswordtoken;
+	}
+
+	public void setResetpasswordtoken(String resetpasswordtoken) {
+		this.resetpasswordtoken = resetpasswordtoken;
+	}
+
+	public String getResetpasswordexpires() {
+		return resetpasswordexpires;
+	}
+
+	public void setResetpasswordexpires(String resetpasswordexpires) {
+		this.resetpasswordexpires = resetpasswordexpires;
+	}
+
+	public String getName() {
         return name;
     }
 
