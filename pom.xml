@@ -99,7 +99,13 @@
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap-datepicker</artifactId>
         <version>1.0.1</version>
-        </dependency>				
+        </dependency>
+        
+        <dependency>
+    	<groupId>org.json</groupId>
+    	<artifactId>json</artifactId>
+    	<version>20160212</version>
+		</dependency>						
 				
 	</dependencies>
 	
