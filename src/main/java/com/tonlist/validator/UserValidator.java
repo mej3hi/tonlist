@@ -3,7 +3,8 @@ package com.tonlist.validator;
 
 
 import com.tonlist.persistence.entities.User;
-import com.tonlist.persistence.service.UserService;
+import com.tonlist.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

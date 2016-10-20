@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tonlist.persistence.entities.User;
-import com.tonlist.persistence.service.UserService;
+import com.tonlist.service.UserService;
 import com.tonlist.validator.ResetPasswValidation;
 
 @Controller

@@ -1,9 +1,10 @@
-package com.tonlist.persistence.service;
+package com.tonlist.service;
 
 
 import com.tonlist.persistence.entities.User;
-import com.tonlist.repository.RoleRepository;
-import com.tonlist.repository.UserRepository;
+import com.tonlist.persistence.repository.RoleRepository;
+import com.tonlist.persistence.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,10 @@
-package com.tonlist.persistence.service;
+package com.tonlist.service;
 
 
 import com.tonlist.persistence.entities.Role;
 import com.tonlist.persistence.entities.User;
-import com.tonlist.repository.UserRepository;
+import com.tonlist.persistence.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

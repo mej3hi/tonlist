@@ -17,7 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tonlist.model.MimeMailSender;
 import com.tonlist.persistence.entities.User;
-import com.tonlist.persistence.service.UserService;
+import com.tonlist.service.UserService;
 
 
 @Controller

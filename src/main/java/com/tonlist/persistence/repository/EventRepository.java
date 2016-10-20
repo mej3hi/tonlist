@@ -1,4 +1,4 @@
-package com.tonlist.repository;
+package com.tonlist.persistence.repository;
 
 
 import com.tonlist.model.Event;

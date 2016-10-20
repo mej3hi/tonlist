@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tonlist.persistence.entities.User;
-import com.tonlist.persistence.service.SecurityService;
-import com.tonlist.persistence.service.UserService;
+import com.tonlist.service.SecurityService;
+import com.tonlist.service.UserService;
 import com.tonlist.validator.UserValidator;
 
 
