@@ -1,11 +1,12 @@
 package com.tonlist.validator;
 
 
-import com.tonlist.model.Event;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+
+import com.tonlist.persistence.entities.Event;
 
 @Component
 public class EventValidator implements Validator {

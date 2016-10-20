@@ -1,7 +1,7 @@
 package com.tonlist.service;
 
 
-import com.tonlist.model.Event;
+import com.tonlist.persistence.entities.Event;
 import com.tonlist.persistence.repository.EventRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
