@@ -11,7 +11,7 @@ import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tonlist.model.Event;
+import com.tonlist.persistence.entities.Event;
 
 @Service
 public class MidiService {

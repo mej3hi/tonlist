@@ -1,4 +1,4 @@
-package com.tonlist.model;
+package com.tonlist.persistence.entities;
 
 import javax.persistence.*;
 
