@@ -1,7 +1,7 @@
-package com.tonlist.service;
+package com.tonlist.persistence.service;
 
 
-import com.tonlist.model.User;
+import com.tonlist.persistence.entities.User;
 
 public interface UserService {
     void save(User user);

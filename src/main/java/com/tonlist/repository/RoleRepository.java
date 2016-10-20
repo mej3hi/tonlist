@@ -1,8 +1,9 @@
 package com.tonlist.repository;
 
 
-import com.tonlist.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.tonlist.persistence.entities.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long>{
 }

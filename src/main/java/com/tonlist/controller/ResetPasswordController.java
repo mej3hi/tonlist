@@ -3,17 +3,15 @@ package com.tonlist.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.tonlist.model.User;
-import com.tonlist.service.UserService;
+import com.tonlist.persistence.entities.User;
+import com.tonlist.persistence.service.UserService;
+import com.tonlist.validator.ResetPasswValidation;
 
 @Controller
 public class ResetPasswordController {
@@ -21,46 +19,61 @@ public class ResetPasswordController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private ResetPasswValidation resetPasswValidation;
 
-	@RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
+	@GetMapping("/resetPassword")
 	public String resetpasswordView(@RequestParam(value = "_key") String resetPasswordToken, final Model model) {
 		User user = userService.findByResetPasswordToken(resetPasswordToken);
 		Date expirationDate;
 		if (user != null) {
-			/*expirationDate = user.getResetPasswordExpires();
+			expirationDate = user.getResetpasswordexpires();
+
 			if (expirationDate.after(new Date())) {
-				model.addAttribute("user", user);
 				model.addAttribute("resetPasswordToken", resetPasswordToken);
+
 				return "resetPassword";
-			}*/
+			}
+
+			String expiresMsg = "The request has already been expires. Please make a request for new password";
+			model.addAttribute("passwordHasexpires", expiresMsg);
+			return "resetPassword";
 		}
-		return "/error";
-	}
 
-	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-	public String resetPassword(@RequestParam(value = "_key") String resetPasswordToken, @ModelAttribute("user") User user,
-			final Model model) {
-		//logger.info("UserLogin# " + user.getEmail() + "  UserPassword# " + user.getPassword());
-		User userToUpdate = userService.findByResetPasswordToken(resetPasswordToken);
-		String uptadedPassword = user.getPassword();
-		userToUpdate.setPassword(encryptPassword(uptadedPassword));
-		//userToUpdate.setResetPasswordToken(null);
-		//userToUpdate.setResetPasswordExpires(null);
-		userService.save(userToUpdate);
+		String erroMsg = "Something went wrong when conforming the request for new password."
+				+ "You could try the link again and see if it will work."
+				+ "If not you could try again request for new password."; 
+				
 
-		//boolean passwordChanged = true;
-		//String redirectionUrl = ServletUriComponentsBuilder.fromCurrentContextPath().path("/").build()
-				//.toUriString();
-		String responseMessage = "Your password was successfully updated";
-		//model.addAttribute("passwordChanged", passwordChanged);
-		//model.addAttribute("redirectionUrl", redirectionUrl);
-		model.addAttribute("responseMessage", responseMessage);
+		model.addAttribute("erroMessage", erroMsg);
 		return "resetPassword";
 	}
 
-	private String encryptPassword(String password) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode(password);
-		return hashedPassword;
+	@PostMapping("/resetPassword")
+	public String resetPassword(@RequestParam(value = "_key") String resetPasswordToken,
+			@RequestParam("password") String password, @RequestParam("passwordConfirm") String passwordConfirm,
+			final Model model) {
+		
+		String PasswordValidation = resetPasswValidation.validate(password, passwordConfirm);
+		
+		if (PasswordValidation != "") {
+			model.addAttribute("passwordErro", PasswordValidation );
+			model.addAttribute("resetPasswordToken", resetPasswordToken); 
+			return "resetPassword";
+		}
+
+		User userToUpdate = userService.findByResetPasswordToken(resetPasswordToken);
+		userToUpdate.setPassword(password);
+		userToUpdate.setResetpasswordtoken(null);
+		userToUpdate.setResetpasswordexpires(null);
+		userService.save(userToUpdate);
+
+		String responseMessage = "Your password was successfully updated";
+		model.addAttribute("responseMessage", responseMessage);
+		return "resetPassword";
+
 	}
+
+
 }
+

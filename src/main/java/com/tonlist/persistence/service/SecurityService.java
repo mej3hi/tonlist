@@ -1,4 +1,4 @@
-package com.tonlist.service;
+package com.tonlist.persistence.service;
 
 public interface SecurityService {
     String findLoggedInUsername();

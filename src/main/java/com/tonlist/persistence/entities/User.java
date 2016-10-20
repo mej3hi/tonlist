@@ -1,4 +1,4 @@
-package com.tonlist.model;
+package com.tonlist.persistence.entities;
 
 import javax.persistence.*;
 
@@ -13,7 +13,7 @@ public class User {
     private String password;
     private String passwordConfirm;
     private String resetpasswordtoken;
-    private String resetpasswordexpires;    
+    private Date resetpasswordexpires;    
     private String name;
     private String email;
     private Set<Role> roles;
@@ -62,11 +62,11 @@ public class User {
 		this.resetpasswordtoken = resetpasswordtoken;
 	}
 
-	public String getResetpasswordexpires() {
+	public Date getResetpasswordexpires() {
 		return resetpasswordexpires;
 	}
 
-	public void setResetpasswordexpires(String resetpasswordexpires) {
+	public void setResetpasswordexpires(Date resetpasswordexpires) {
 		this.resetpasswordexpires = resetpasswordexpires;
 	}
 

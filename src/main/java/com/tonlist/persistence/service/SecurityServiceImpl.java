@@ -1,4 +1,4 @@
-package com.tonlist.service;
+package com.tonlist.persistence.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

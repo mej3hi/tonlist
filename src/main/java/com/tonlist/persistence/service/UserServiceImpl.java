@@ -1,7 +1,7 @@
-package com.tonlist.service;
+package com.tonlist.persistence.service;
 
 
-import com.tonlist.model.User;
+import com.tonlist.persistence.entities.User;
 import com.tonlist.repository.RoleRepository;
 import com.tonlist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findByResetPasswordToken(String token) {
-		//return userRepository.findByResetPasswordToken(token);
-		return null;
+		return userRepository.findByresetpasswordtoken(token);
+		
 	}
 }
