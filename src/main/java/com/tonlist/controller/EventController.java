@@ -38,15 +38,28 @@ public class EventController {
     }
 	
     @PostMapping("/createEvent")
-    public String registration(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
-        String s = FileManager.storeFile(file);
-        event.setImageurl(s);
+    public String registration(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
+    	
+     	
+    	if(file.isEmpty()){
+    		String noImage = "Please choose picture";
+			model.addAttribute("erroImage", noImage);
+    		return "createEvent";
+    	}
+    	
+    	if(file.getSize() > 20000){
+    		String imageToBig = "The picture is to big, Max size 2mb";
+			model.addAttribute("erroImage", imageToBig);
+    		return "createEvent";
+    	}
+
     	eventValidator.validate(event, bindingResult);
-        
-        
+               
         if (bindingResult.hasErrors()) 
             return "createEvent";
-
+        
+    	String s = FileManager.storeFile(file);
+        event.setImageurl(s);
         eventService.save(event);
         
         return "redirect:/myevents";
