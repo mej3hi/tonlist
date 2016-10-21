@@ -74,5 +74,22 @@ public class EventController {
     	return "myevents";
     }
     
+    @RequestMapping("/removeEvent")
+    String removeEvent(@RequestParam Long id){
+    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
+    	eventService.deletebyUsernameAndId(username, id);
+    	
+    	return "myevents";
+    }
+    
+    @RequestMapping("/editEvent")
+    String editEvent(@RequestParam Long id, Model model){
+    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
+    	Event event = eventService.findByUsernameAndId(username, id);
+    	model.addAttribute("event", event);
+    	
+    	return "editEvent";
+    }
+    
 
 }
