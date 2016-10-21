@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/java,maven,eclipse,windows,linux,osx
 
 ### Maven ###
+*target/
+*target
 */target/*
 */target/**
 target/
