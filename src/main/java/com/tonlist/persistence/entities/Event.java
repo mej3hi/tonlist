@@ -17,6 +17,8 @@ public class Event {
 	private Date date;
 	private String time;
 	private String imageurl;
+	private String description;
+	
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -79,6 +81,14 @@ public class Event {
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
     }
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 
 }

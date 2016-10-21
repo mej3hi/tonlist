@@ -30,18 +30,23 @@ public class EventValidator implements Validator {
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "time", "NotEmpty");
-        if (event.getTime().length() < 3 || event.getTime().length() > 32) {
+        /*if (event.getTime().length() < 3 || event.getTime().length() > 32) {
             errors.rejectValue("time", "Size.eventForm.time");
-        }
+        }*/
         
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "date", "NotEmpty");
-        if (event.getTime().length() < 3 || event.getTime().length() > 32) {
+       /* if (event.getTime().length() < 3 || event.getTime().length() > 32) {
             errors.rejectValue("date", "Size.eventForm.date");
-        }
+        }*/
         
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "imageurl", "NotEmpty");
+        /*ValidationUtils.rejectIfEmptyOrWhitespace(errors, "imageurl", "NotEmpty");
         if (event.getTime().length() < 3 || event.getTime().length() > 32) {
             errors.rejectValue("imageurl", "Size.eventForm.imageurl");
+        }*/
+        
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "NotEmpty");
+        if (event.getDescription().length() < 3 || event.getDescription().length() > 500) {
+            errors.rejectValue("description", "Size.eventForm.description");
         }
 
     }
