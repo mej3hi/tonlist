@@ -29,7 +29,7 @@ public class SignUpController {
     private UserValidator userValidator;
 	
 	@GetMapping("/signUp")
-    String signIn(Model model){	
+    String signUp(Model model){	
 		model.addAttribute("userForm", new User());
         
 		return "signUp";

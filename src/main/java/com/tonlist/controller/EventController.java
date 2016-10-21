@@ -30,7 +30,7 @@ public class EventController {
     private EventValidator eventValidator;
 
     @GetMapping("/createEvent")
-    String signIn(Model model){	
+    String createEvent(Model model){	
     	System.out.println("okok");
 		model.addAttribute("event", new Event());
         
@@ -38,7 +38,7 @@ public class EventController {
     }
 	
     @PostMapping("/createEvent")
-    public String registration(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
+    public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
     	
      	
     	if(file.isEmpty()){
@@ -66,7 +66,7 @@ public class EventController {
     }
     
     @RequestMapping("/myevents")
-    String myevent(Model model){
+    String myEvent(Model model){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
     	List<Event> events = eventService.findByUsername(username);
     	model.addAttribute("events", events);
