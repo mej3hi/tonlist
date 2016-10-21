@@ -27,8 +27,20 @@ public class EventService {
         return eventRepository.findByDate(date);
     }
     
+    public Event findByUsernameAndId(String username, Long id) {
+        return eventRepository.findByUsernameAndId(username, id);
+    }
+    
+    public List<Event> findFirst6ByOrderByDateAsc(){
+    	return eventRepository.findFirst6ByOrderByDateAsc();
+    }
+    
     public void deletebyUsername(String username){
     	eventRepository.deleteByUsername(username);
+    }
+    
+    public void deletebyUsernameAndId(String username, Long id){
+    	eventRepository.deleteByUsernameAndId(username, id);
     }
 
 }

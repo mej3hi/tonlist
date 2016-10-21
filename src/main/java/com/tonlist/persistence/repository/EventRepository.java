@@ -15,7 +15,14 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     
     List<Event> findByDate(Date date);
     
+    Event findByUsernameAndId(String username, Long id);
+    
+    List<Event> findFirst6ByOrderByDateAsc();
+    
     @Transactional
     void deleteByUsername(String username);
+    
+    @Transactional
+    void deleteByUsernameAndId(String username, Long id);
     
 }
