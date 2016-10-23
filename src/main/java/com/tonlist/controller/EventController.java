@@ -31,7 +31,6 @@ public class EventController {
 
     @GetMapping("/createEvent")
     String createEvent(Model model){	
-    	System.out.println("okok");
 		model.addAttribute("event", new Event());
         
 		return "createEvent";

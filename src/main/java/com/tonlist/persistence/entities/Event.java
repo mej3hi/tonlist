@@ -18,6 +18,7 @@ public class Event {
 	private String time;
 	private String imageurl;
 	private String description;
+	private String musicgenres = "Other";
 	
 
     @Id
@@ -89,6 +90,15 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getMusicgenres() {
+		return musicgenres;
+	}
+
+	public void setMusicgenres(String musicgenres) {
+		this.musicgenres = musicgenres;
+	}
+
 
 
 }

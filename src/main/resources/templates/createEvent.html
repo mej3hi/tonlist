@@ -14,7 +14,7 @@
 			                			               
 			               <div class="row">
 			               
-			               		<div class=" col-md-5 ">
+			               		<div class=" col-md-6 ">
         						     <div class="form-group">		                		
 				                		<label for="name" class="cols-sm-2 control-label">Name of the Event</label>
 						                <input type="text" th:field="*{name}"  placeholder="Name of the Event" class="form-control"  />
@@ -23,7 +23,7 @@
 			                 	</div>
 			               		
 			               		
-			               		<div class=" col-md-7 ">				               	
+			               		<div class=" col-md-6 ">				               	
 					               	<div class="form-group">			               	
 					               		<label for="location" class="cols-sm-2 control-label">Location</label>
 				                		<input type="text" th:field="*{location}"  placeholder="Enter location" class="form-control" />
@@ -34,21 +34,20 @@
 			               </div>
 			               
 			               <div class="row">
-			               		<div class=" col-md-5 ">
-				                	<div class="form-group">			               		
-					               		<label for="confirm" class="cols-sm-2 control-label">Image</label>	
-			                			<input type="file" name="file" accept="image/*" />
-					                	<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('imageurl')}" th:errors="*{imageurl}"></div>
+			               		<div class=" col-md-6 ">
+				                	<div class="form-group">
+					               			<label for="image" class="cols-sm-2 control-label">Image</label>
+			                				<input id="imgInp" type="file" name="file" accept="image/*" />
 					                	<div class="alert alert-danger" role="alert" th:text="${erroImage}" th:if="${erroImage}" ></div>
-					                	<img src="#" height="150"  />
+					                	<img id="imgEvent" src="#" th:src="@{/static/images/icon_picture.png}" height="200" width="355" />
 					                </div>			               		
 			               		</div>
 			               		
 			               		
-			               		<div class=" col-md-7 ">
+			               		<div class=" col-md-6 ">
 					               <div class="form-group">			               	
 					               		<label for="description" class="cols-sm-2 control-label">Description</label>	
-					               		<textarea th:field="*{description}" class="form-control" rows="6" placeholder="Description"></textarea> 			
+					               		<textarea th:field="*{description}" class="form-control" rows="8" placeholder="Description"></textarea> 			
 		 			                	<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div> 
 					                </div>			               		
 			               		</div>			               
@@ -57,24 +56,41 @@
 			               
 			               <div class="row">
 			               
-			               		<div class=" col-md-5 ">
+			               		<div class=" col-md-6 ">
 					               	<div class="form-group">			               	
 					               		<label for="time" class="cols-sm-2 control-label">Time</label>
-			                			<input type="text" th:field="*{time}" placeholder="Enter time" class="form-control" />
+					               		<div class="bootstrap-timepicker">
+			                				<input type="text" id="timepicker1" th:field="*{time}" placeholder="Enter time" class="form-control" />
+				                		</div>
 				                		<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></div>
 					                </div>			               		
 			               		</div>
-			               		
-			               		
-			               		<div class=" col-md-7 ">
+			               					               		
+			               		<div class=" col-md-6 ">
 					               	<div class="form-group">			               	
 					               		<label for="date" class="cols-sm-2 control-label">Date</label>
-			                			<input type="text" th:field="*{date}"  placeholder="Enter date" class="form-control" />
+			                			<input type="text" id="datepicker" class="form-control" data-provide="datepicker" th:field="*{date}"  placeholder="Pick a date" readonly="readonly" />
 				                		<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
 					                </div>			               		
 			               		</div>			               			               			               			               			               
 			               </div>
 			               
+	               			<div class="row">
+	               				<div class=" col-md-12 ">
+	               					<div class="form-group">
+	               						<div>
+               								<label for="musicgenres" class="cols-sm-2 control-label">Music genres</label>
+  										</div>
+  										<label class="radio-inline"><input type="radio" name="musicGenres" th:field="*{musicgenres}" th:value="Other" />Other</label>
+	               						<label class="radio-inline"><input type="radio" name="musicGenres" th:field="*{musicgenres}" th:value="Rock" />Rock</label>
+		               					<label class="radio-inline"><input type="radio" name="musicGenres" th:field="*{musicgenres}" th:value="Pop" />Pop</label>
+		               					<label class="radio-inline"><input type="radio" name="musicGenres" th:field="*{musicgenres}" th:value="jazz" />jazz</label>
+		               					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('musicgenres')}" th:errors="*{musicgenres}"></div>		               					
+	               					</div>
+	               				</div>
+	               			</div>
+			
+			               				               
 			               <div class="row">
 			               		<div class=" col-md-6 col-md-offset-3">
 			               			<button class="btn btn-lg btn-primary btn-block" type="submit">Create Event</button>
