@@ -20,6 +20,9 @@ public class Event {
 	private String description;
 	private String musicgenres;
 	
+	public Event(){
+		this.musicgenres = "Other";
+	}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

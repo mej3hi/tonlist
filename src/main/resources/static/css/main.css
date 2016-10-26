@@ -98,9 +98,9 @@ body {
   background: 
   /* color overlay */ 
     linear-gradient(
-      rgb(51, 51, 51), 
-      rgba(0, 0, 0, 0.67)
-    ),
+      rgba(0, 0, 0,1), 
+      rgba(0, 0, 0, 0.70)
+    )
     /* image to overlay */
    /* url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);*/
 }
