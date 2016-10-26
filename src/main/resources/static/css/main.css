@@ -64,9 +64,43 @@
 {
 	margin-left: 8px;
 }
+/*-----------------create event --------------------------*/
 
 #imgInp
 {
 	display: inline;
     padding-left: 15px;	
+}
+
+/*----------------------Footer---------------------------------- */
+
+.footertext {
+  color: #ffffff;
+}
+
+/*html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+ /* margin-bottom: 60px;
+}*/
+
+#footer {
+	margin-top: 60px;
+	border-radius: 4px;
+  /*position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  /*height: 280px;*/
+  background: 
+  /* color overlay */ 
+    linear-gradient(
+      rgb(51, 51, 51), 
+      rgba(0, 0, 0, 0.67)
+    ),
+    /* image to overlay */
+   /* url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);*/
 }

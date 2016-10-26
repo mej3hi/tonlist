@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileManager {
@@ -13,6 +14,21 @@ public class FileManager {
     	String dir = System.getProperty("user.dir");
     	dir+= File.separator+"src"+File.separator+"main"+File.separator;
     	dir+= "resources"+File.separator+"static"+File.separator+"images"+File.separator;
+    	
+    	
+    	/*
+    	File fileDir = new File(dir);
+    	File dest = new File(fileDir,  file.getOriginalFilename()); 
+    	try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+    	
     	if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
@@ -28,7 +44,7 @@ public class FileManager {
         } else {
             return("Unable to upload. File is empty.");
         }
-    	
+    	//return (dir+fileName).replaceAll(".*?(static.*)", "$1").replace("\\", "/");
     }
 	
 }

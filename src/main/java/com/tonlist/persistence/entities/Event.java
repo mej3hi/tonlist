@@ -18,7 +18,7 @@ public class Event {
 	private String time;
 	private String imageurl;
 	private String description;
-	private String musicgenres = "Other";
+	private String musicgenres;
 	
 
     @Id
