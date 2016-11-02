@@ -23,11 +23,11 @@ public class IndexController {
 	
 	@RequestMapping("/")
     String index(Model model){
-		Date day = today();
+		//Date day = today();
 		//List<Event> events = eventService.findByDate(day);
 		List<Event> events = eventService.findFirst6ByOrderByDateAsc();
 		model.addAttribute("events", events);
-		model.addAttribute("day", day);
+		//model.addAttribute("day", day);
 		
 		return "index";
     }

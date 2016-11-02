@@ -6,13 +6,15 @@
   <body>
     <div th:fragment="content">
     
-    	<h1 th:text="${day} ? ${#calendars.format(day,'dd MMMM yyyy')}"></h1>
+<!--     	<h1 th:text="${day} ? ${#calendars.format(day,'dd MMMM yyyy')}"></h1> -->
+    	<input id="searchdate" type="text" />
     
     	<h5 th:if="${#lists.isEmpty(events)}">No Events</h5>
     	
 	    <div th:each="event : ${events}" class="event">
 	    <img th:src="${event.imageurl}" alt="Image of the event"/>
           <p th:text="${event.name}"></p>
+          <p th:text="${#calendars.format(event.date,'dd MMMM yyyy')}"></p>
           <p th:text="${event.time}"></p>
           <p th:text="${event.location}"></p>
         </div>

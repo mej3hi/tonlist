@@ -38,5 +38,17 @@ $(document).ready(function() {
      });
 	 
 	 
+	 $("#searchdate")
+	    .datepicker({
+	      format: "dd-mm-yyyy",
+	      onSelect: function(dateText) {
+	        $(this).change();
+	      }
+	    })
+	    .change(function() {
+	      window.location.href = "calander?day=" + this.value;
+	    });
+	 
+	 
 	 //$('#timepicker1').timepicker('setTime', '12:45 AM');
 });
