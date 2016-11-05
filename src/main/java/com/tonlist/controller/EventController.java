@@ -66,7 +66,7 @@ public class EventController {
         return "redirect:/myevents";
     }
     
-    @RequestMapping("/myevents")
+    @GetMapping("/myevents")
     String myEvent(Model model){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
     	List<Event> events = eventService.findByUsername(username);
@@ -75,7 +75,7 @@ public class EventController {
     	return "myevents";
     }
     
-    @RequestMapping("/removeEvent")
+    @GetMapping("/removeEvent")
     String removeEvent(@RequestParam Long id){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
     	eventService.deletebyUsernameAndId(username, id);
