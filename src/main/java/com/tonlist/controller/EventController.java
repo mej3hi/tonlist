@@ -85,7 +85,6 @@ public class EventController {
     String editEvent(@RequestParam Long id, Model model){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
     	Event event = eventService.findByUsernameAndId(username, id);
-    	System.out.println("getMapping"+event.getImageurl());
     	model.addAttribute("event", event);
     	
     	return "editEvent";
