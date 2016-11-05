@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tonlist.model.FileManager;
@@ -21,6 +22,7 @@ import com.tonlist.validator.EventValidator;
 
 
 @Controller
+@SessionAttributes("event")
 public class EventController {
 	
     @Autowired
@@ -92,21 +94,30 @@ public class EventController {
     
     @PostMapping("/editEvent")
     public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
-
-	    	if(!file.isEmpty() && file.getSize() > 2097152){
+    	System.out.println("lala: "+event.getImageurl());
+    	if( !file.isEmpty() || event.getImageurl() == null){
+	    	if(file.isEmpty()){
+	    		String noImage = "Please choose picture";
+				model.addAttribute("erroImage", noImage);
+	    		return "createEvent";
+	    	}
+	    	
+	    	if(file.getSize() > 2097152){
 	    		String imageToBig = "The picture is to big, Max size 2mb";
 				model.addAttribute("erroImage", imageToBig);
-	    		return "editEvent";
+	    		return "createEvent";
 	    	}
-     	
+    	}
 
     	eventValidator.validate(event, bindingResult);
                
         if (bindingResult.hasErrors()) 
             return "editEvent";
         
-    	String s = FileManager.storeFile(file);
-        event.setImageurl(s);
+        if(!file.isEmpty()){
+	    	String s = FileManager.storeFile(file);
+	        event.setImageurl(s);
+        }
         eventService.save(event);
         
         return "redirect:/myevents";
