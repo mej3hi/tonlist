@@ -39,19 +39,18 @@ public class EventController {
     @PostMapping("/createEvent")
     public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
     	
-     	if(!file.isEmpty() || event.getImageurl()!=null){
 	    	if(file.isEmpty()){
 	    		String noImage = "Please choose picture";
 				model.addAttribute("erroImage", noImage);
 	    		return "createEvent";
 	    	}
 	    	
-	    	if(file.getSize() > 20000){
+	    	if(file.getSize() > 2097152){
 	    		String imageToBig = "The picture is to big, Max size 2mb";
 				model.addAttribute("erroImage", imageToBig);
 	    		return "createEvent";
 	    	}
-     	}
+     	
 
     	eventValidator.validate(event, bindingResult);
                
@@ -82,13 +81,36 @@ public class EventController {
     	return "myevents";
     }
     
-    @RequestMapping("/editEvent")
+    @GetMapping("/editEvent")
     String editEvent(@RequestParam Long id, Model model){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
     	Event event = eventService.findByUsernameAndId(username, id);
+    	System.out.println("getMapping"+event.getImageurl());
     	model.addAttribute("event", event);
     	
     	return "editEvent";
     }
     
+    @PostMapping("/editEvent")
+    public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
+
+	    	if(!file.isEmpty() && file.getSize() > 2097152){
+	    		String imageToBig = "The picture is to big, Max size 2mb";
+				model.addAttribute("erroImage", imageToBig);
+	    		return "editEvent";
+	    	}
+     	
+
+    	eventValidator.validate(event, bindingResult);
+               
+        if (bindingResult.hasErrors()) 
+            return "editEvent";
+        
+    	String s = FileManager.storeFile(file);
+        event.setImageurl(s);
+        eventService.save(event);
+        
+        return "redirect:/myevents";
+    }
+
 }
