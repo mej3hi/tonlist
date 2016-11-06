@@ -1,3 +1,7 @@
+.container {
+    background-color: #F5F5F5;
+}
+
 .form-signin
 {
 
@@ -64,12 +68,39 @@
 {
 	margin-left: 8px;
 }
+.event
+{
+	
+	width: 50%;
+	border: 1px solid #000;
+	padding: 10px;
+	overflow: auto;
+	margin: auto;
+	background-color: white;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.event img
+{
+	float: left;
+	height:auto;
+	width: 285px;
+	height: 190px;
+	margin: 10px;
+	border-radius: 1%;
+}
+#searchdate
+{
+	margin-left: 45%;
+}
+
 /*-----------------create event --------------------------*/
 
 #imgInp
 {
 	display: inline;
-    padding-left: 15px;	
+    padding-left: 15px;
 }
 
 /*----------------------Footer---------------------------------- */
@@ -83,7 +114,7 @@
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
+  /*Margin bottom by footer height */
  /* margin-bottom: 60px;
 }*/
 
