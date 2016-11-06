@@ -40,7 +40,8 @@ $(document).ready(function() {
 	 
 	 $("#searchdate")
 	    .datepicker({
-	      format: "dd-mm-yyyy",
+	    	todayHighlight: true,
+	    	format: "dd-mm-yyyy",
 	      onSelect: function(dateText) {
 	        $(this).change();
 	      }
