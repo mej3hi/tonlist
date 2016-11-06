@@ -45,8 +45,9 @@ $(document).ready(function() {
 	        $(this).change();
 	      }
 	    })
-	    .change(function() {
-	      window.location.href = "calander?day=" + this.value;
+	    .change(function(e) {
+	    	if(this.value != "")
+	    		window.location.href = "calander?day=" + this.value;
 	    });
 	 
 	 
