@@ -48,7 +48,8 @@ $(document).ready(function() {
 	    	    },
 	    	    format: "dd-mm-yyyy"
 	     }).on('changeDate', function (e) {
-	    	 window.location.href = "calander?day=" + this.value;});
+	    	 if(this.value != "")
+	    		 window.location.href = "calander?day=" + this.value;});
 
 	 
 	    $('.confirmation').on('click', function () {
