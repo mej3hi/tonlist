@@ -5,6 +5,8 @@
   </head>
   <body>
     <div th:fragment="content">
+    	
+    	<input id="searchdate" type="text" readonly="readonly" />
     
     	<h1 th:text="${day} ? ${#calendars.format(day,'dd MMMM yyyy')}"></h1>
     

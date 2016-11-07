@@ -1,50 +1,62 @@
 package com.tonlist.model;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 
+import java.io.IOException;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+
+
+@Component
 public class FileManager {
-	
-	public static String storeFile(MultipartFile file){
-    	String fileName = file.getOriginalFilename();
-    	String dir = System.getProperty("user.dir");
-    	dir+= File.separator+"src"+File.separator+"main"+File.separator;
-    	dir+= "resources"+File.separator+"static"+File.separator+"images"+File.separator;
-    	
-    	
-    	/*
-    	File fileDir = new File(dir);
-    	File dest = new File(fileDir,  file.getOriginalFilename()); 
-    	try {
-			file.transferTo(dest);
-		} catch (IllegalStateException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+
+	@Value("${cloud.aws.s3.bucket}")
+	private String bucket;
+
+	@Autowired
+	private AmazonS3Client s3Client;
+
+	private static final String SUFFIX = "/";
+	private static final String UNDERSCORE = "_";
+
+	public String storeFile(MultipartFile file, String username, String eventName) {
+
+		String[] splitType = file.getOriginalFilename().split("\\.");
+		String type = "." + splitType[splitType.length - 1];
+		String uuid = UUID.randomUUID().toString();
+		String folderName = "eventImages";
+		String fileName = folderName + SUFFIX + username + SUFFIX + username + UNDERSCORE + eventName + UNDERSCORE + uuid
+				+ type;
+
+		ObjectMetadata objectMetadata = new ObjectMetadata();
+		objectMetadata.setContentType(file.getContentType());
+		try {
+			objectMetadata.setContentLength(file.getBytes().length);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
-    	
-    	if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                BufferedOutputStream buffStream = 
-                        new BufferedOutputStream(new FileOutputStream(new File(dir + fileName)));
-                buffStream.write(bytes);
-                buffStream.close();
-                
-                return (dir+fileName).replaceAll(".*?(static.*)", "$1").replace("\\", "/");
-            } catch (Exception e) {
-                return("You failed to upload " + fileName + ": " + e.getMessage());
-            }
-        } else {
-            return("Unable to upload. File is empty.");
-        }
-    	//return (dir+fileName).replaceAll(".*?(static.*)", "$1").replace("\\", "/");
-    }
-	
+			return "erro";
+		}
+
+		try {
+
+			s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), objectMetadata)
+					.withCannedAcl(CannedAccessControlList.PublicRead));
+
+		} catch (Exception e) {
+			return "erro";
+		}
+
+		return "https://s3-eu-west-1.amazonaws.com/" + bucket + "/" + fileName;
+	}
+
+
+
 }

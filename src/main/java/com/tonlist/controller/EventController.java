@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +29,10 @@ public class EventController {
     
     @Autowired
     private EventValidator eventValidator;
+    
+    @Autowired
+    private FileManager fileManager;
+    
 
     @GetMapping("/createEvent")
     String createEvent(Model model){	
@@ -53,13 +56,22 @@ public class EventController {
 	    		return "createEvent";
 	    	}
      	
-
     	eventValidator.validate(event, bindingResult);
                
         if (bindingResult.hasErrors()) 
             return "createEvent";
         
-    	String s = FileManager.storeFile(file);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        
+    	String s = fileManager.storeFile(file, username, event.getName());
+    	
+    	if(s == "erro"){
+    		String imageS3Erro = "Faild to store image in our database, Please try again";
+			model.addAttribute("erroImage", imageS3Erro);
+    		return "createEvent";
+    	}
+    	
+    	event.setUsername(username);
         event.setImageurl(s);
         eventService.save(event);
         
@@ -114,8 +126,10 @@ public class EventController {
         if (bindingResult.hasErrors()) 
             return "editEvent";
         
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        
         if(!file.isEmpty()){
-	    	String s = FileManager.storeFile(file);
+	    	String s = fileManager.storeFile(file, username, event.getName());
 	        event.setImageurl(s);
         }
         eventService.save(event);
