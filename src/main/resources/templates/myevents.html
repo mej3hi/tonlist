@@ -16,7 +16,7 @@
           <p th:text="${event.time}"></p>
           <p th:text="${event.location}"></p>
           <p><a th:href="'/editEvent?id=' + ${event.id}">edit</a></p>
-          <p><a th:href="'/removeEvent?id=' + ${event.id}">remove</a></p>
+          <p><a class="confirmation" th:href="'/removeEvent?id=' + ${event.id}">remove</a></p>
         </div>
       
     </div>

@@ -38,17 +38,21 @@ $(document).ready(function() {
      });
 	 
 	 
-	 $("#searchdate")
-	    .datepicker({
-	    	todayHighlight: true,
-	    	format: "dd-mm-yyyy",
-	      onSelect: function(dateText) {
-	        $(this).change();
-	      }
-	    })
-	    .change(function(e) {
-	    	if(this.value != "")
-	    		window.location.href = "calander?day=" + this.value;
+	 if(document.getElementById("searchdate"))
+		 var availableDates = $('#searchdate').data("dates").split(",");
+
+	     $('#searchdate').datepicker({ 
+	    	 beforeShowDay: function (date) {
+	    	        var dt_ddmmyyyy = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+	    	        return (availableDates.indexOf(dt_ddmmyyyy) != -1);
+	    	    },
+	    	    format: "dd-mm-yyyy"
+	     }).on('changeDate', function (e) {
+	    	 window.location.href = "calander?day=" + this.value;});
+
+	 
+	    $('.confirmation').on('click', function () {
+	        return confirm('Are you sure?');
 	    });
 	 
 	 
