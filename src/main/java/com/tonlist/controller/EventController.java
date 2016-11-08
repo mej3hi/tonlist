@@ -92,7 +92,7 @@ public class EventController {
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
     	eventService.deletebyUsernameAndId(username, id);
     	
-    	return "myevents";
+    	return "redirect:/myevents";
     }
     
     @GetMapping("/editEvent")

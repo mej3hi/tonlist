@@ -24,24 +24,26 @@ public class IndexController {
 	
 	@GetMapping("/")
     String index(Model model){
-		//Date day = today();
-		//List<Event> events = eventService.findByDate(day);
 		List<Event> events = eventService.findFirst6ByOrderByDateAsc();
 		model.addAttribute("events", events);
-		//model.addAttribute("day", day);
+
+		String dates = arrayToString(eventService.findAllDates());
+		model.addAttribute("dates", dates);
 		
 		return "index";
     }
 	
-	private Date today(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");      
-		Date day=new Date();
-		try {
-			day = sdf.parse(sdf.format(new Date()));
-		} catch (ParseException e) {
-			e.printStackTrace();
+	private String arrayToString(Date[] array){
+		String s = "";
+		for(int i=0; i < array.length; i++){
+			s+=","+dateToString(array[i]);
 		}
-		return day;
+		return s.replaceFirst(",", "");
+	}
+	
+	private String dateToString(Date date){
+		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		return df.format(date);
 	}
 	
  

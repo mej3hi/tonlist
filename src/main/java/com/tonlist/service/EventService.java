@@ -42,5 +42,9 @@ public class EventService {
     public void deletebyUsernameAndId(String username, Long id){
     	eventRepository.deleteByUsernameAndId(username, id);
     }
+    
+    public Date[] findAllDates(){
+    	return eventRepository.findAllDates();
+    }
 
 }

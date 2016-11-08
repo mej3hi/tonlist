@@ -5,13 +5,13 @@
   </head>
   <body>
     <div th:fragment="content">
-    
-<!--     	<h1 th:text="${day} ? ${#calendars.format(day,'dd MMMM yyyy')}"></h1> -->
+
 	<div class="row">
 		
-			<input id="searchdate" type="text" readonly="readonly" />
+			<input id="searchdate" type="text" readonly="readonly" th:attr="data-dates=${dates}" />
 	</div>
     	
+
     
     	<h5 th:if="${#lists.isEmpty(events)}">No Events</h5>
     	

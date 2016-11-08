@@ -27,4 +27,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     @Transactional
     void deleteByUsernameAndId(String username, Long id);
     
+    @Query(value = "SELECT DATE FROM EVENTS WHERE DATE >= CURDATE() GROUP BY DATE", nativeQuery = true)
+    Date[] findAllDates();
+    
 }
