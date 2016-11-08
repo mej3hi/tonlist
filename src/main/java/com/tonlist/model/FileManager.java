@@ -2,8 +2,8 @@ package com.tonlist.model;
 
 
 import java.io.IOException;
-import java.util.UUID;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -32,7 +32,7 @@ public class FileManager {
 
 		String[] splitType = file.getOriginalFilename().split("\\.");
 		String type = "." + splitType[splitType.length - 1];
-		String uuid = UUID.randomUUID().toString();
+		String uuid = new SimpleDateFormat("dd-MM-yyyy_HH:mm:ss").format(new Date());
 		String folderName = "eventImages";
 		String fileName = folderName + SUFFIX + username + SUFFIX + username + UNDERSCORE + eventName + UNDERSCORE + uuid
 				+ type;

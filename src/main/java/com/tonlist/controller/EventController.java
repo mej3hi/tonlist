@@ -130,8 +130,16 @@ public class EventController {
         
         if(!file.isEmpty()){
 	    	String s = fileManager.storeFile(file, username, event.getName());
+	    	
+	    	if(s == "erro"){
+	    		String imageS3Erro = "Faild to store image in our database, Please try again";
+				model.addAttribute("erroImage", imageS3Erro);
+	    		return "createEvent";
+	    	}
+	    	
 	        event.setImageurl(s);
         }
+               
         eventService.save(event);
         
         return "redirect:/myevents";

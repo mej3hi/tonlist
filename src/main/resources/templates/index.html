@@ -7,18 +7,51 @@
     <div th:fragment="content">
     
 <!--     	<h1 th:text="${day} ? ${#calendars.format(day,'dd MMMM yyyy')}"></h1> -->
-    	<input id="searchdate" type="text" readonly="readonly" />
+	<div class="row">
+		
+			<input id="searchdate" type="text" readonly="readonly" />
+	</div>
+    	
     
     	<h5 th:if="${#lists.isEmpty(events)}">No Events</h5>
     	
-	    <div th:each="event : ${events}" class="event">
-	    <img th:src="${event.imageurl}" alt="Image of the event"/>
-          <p th:text="${event.name}"></p>
-          <p th:text="${#calendars.format(event.date,'dd MMMM yyyy')}"></p>
-          <p th:text="${event.time}"></p>
-          <p th:text="${event.location}"></p>
-          <p th:text="${event.description}"></p>
+    <div class="row eventrow">
+	    <div class="col-md-6" th:each="event : ${events}" >
+       		<div class= "event">
+			    <div class="row">  	    
+			    	<div class="col-md-6">
+			    		<h4 id="eventname" th:text="${event.name}"></h4>
+			    	</div>	    	
+				    <div class="col-md-6">
+			    		 <h4 id="eventlocation" th:text="${event.location}"></h4>
+			    	</div>	    	    
+			    </div>
+		    
+			    <div class="row">  	    
+			    	<div class="col-md-6">
+			    		<img id="eventimg" th:src="${event.imageurl}" alt="Image of the event"/>
+			    	</div>	
+				    <div class="col-md-6">
+			    		 <p id="eventdescription" th:text="${event.description}"></p>
+			    	</div>	    	    
+			    </div>	 
+			       
+			    <div class="row">  	    
+			    	<div class="col-md-6">			    	
+			    		<h5 id="eventtime" th:text="${event.time}"></h5>
+			    		<h5 id="eventdata" th:text="${#calendars.format(event.date,'dd MMMM yyyy')}"></h5>
+			    	</div>	    	
+				    <div class="col-md-6">
+			    		 <p id="eventgenres" th:text="${event.musicgenres}"></p>
+			    	</div>	    	    
+			    </div>
+		    </div>    	    	  
         </div>
+    </div>	   
+        
+        
+        
+        
       
     </div>
   </body>

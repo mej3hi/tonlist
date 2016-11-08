@@ -3,14 +3,15 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<head lang="en">	
 	
-	    <title>Spring Framework Guru</title>
+		<meta charset="utf-8"/>
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	    <title>Iceland Events</title>
 	    	
-	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
 	    
-	    	  
-		<link href="../../static/css/main.css"
-          		th:href="@{/static/css/main.css}" rel="stylesheet" media="screen" type="text/css" /> 
-	    
+
 	    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
 	          	th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}" rel="stylesheet" media="screen" /> 
 
@@ -18,19 +19,16 @@
 	          	th:href="@{/static/css/bootstrap-timepicker.min.css}" rel="stylesheet" media="screen" />	          	
 
 	    <link href="http://cdn.jsdelivr.net/webjars/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.css"
-	          	th:href="@{/webjars/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.css}" rel="stylesheet" media="screen" /> 	          	
- 	  
+	          	th:href="@{/webjars/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.css}" rel="stylesheet" media="screen" /> 
+	          		          		  	    	  
+		<link href="../../static/css/main.css"
+          		th:href="@{/static/css/main.css}" rel="stylesheet" media="screen" type="text/css" /> 
+	    
 	          		          	
 	</head>
 	  	<body>
-  			<main class="container">
-  				
-  				
-
-
-
-  	
-			    
+  			<main >
+  									    
 			    <div th:replace="fragments/header :: header">Header</div>
 			    			    
 				<div th:if="${#httpServletRequest.remoteUser}"> <!-- if customer is not anonymous-->
@@ -39,9 +37,12 @@
 				
 				<div th:unless="${#httpServletRequest.remoteUser}"> <!-- if customer is anonymous-->
   					<div th:replace="fragments/nav :: nav" >Nav</div>
-				</div>							    		    			    			   			    			  			    
+				</div>	
+				
+				<div class="container mainVeiw">				    		    			    			   			    			  			    			    
+			    	<div th:replace="${view} :: content">Page Content</div>
+			    </div >		
 			    
-			    <div th:replace="${view} :: content">Page Content</div>
 			    <div th:replace="fragments/footer :: footer">Footer</div>
 		   		   
 		    </main>
