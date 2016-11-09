@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tonlist.model.FileManager;
+import com.tonlist.extraUtilities.FileManager;
 import com.tonlist.persistence.entities.Event;
 import com.tonlist.service.EventService;
 import com.tonlist.validator.EventValidator;

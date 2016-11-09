@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tonlist.model.I;
+import com.tonlist.extraUtilities.ConvertTools;
 import com.tonlist.persistence.entities.Event;
 import com.tonlist.service.EventService;
 
@@ -36,7 +36,7 @@ public class CalanderController {
 		model.addAttribute("events", events);
 		model.addAttribute("day", day);
 		
-		String dates = I.arrayToString(eventService.findAllDates());
+		String dates = ConvertTools.arrayToString(eventService.findAllDates());
 		model.addAttribute("dates", dates);
 		
 		return "index";

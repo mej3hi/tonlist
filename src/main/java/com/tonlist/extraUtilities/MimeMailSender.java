@@ -1,4 +1,4 @@
-package com.tonlist.model;
+package com.tonlist.extraUtilities;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;

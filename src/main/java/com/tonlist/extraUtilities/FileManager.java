@@ -1,4 +1,4 @@
-package com.tonlist.model;
+package com.tonlist.extraUtilities;
 
 
 import java.io.IOException;

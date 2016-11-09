@@ -1,9 +1,9 @@
-package com.tonlist.model;
+package com.tonlist.extraUtilities;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class I {
+public class ConvertTools {
 	
 	public static String arrayToString(Date[] array){
 		String s = "";

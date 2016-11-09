@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.tonlist.model.MimeMailSender;
+import com.tonlist.extraUtilities.MimeMailSender;
 import com.tonlist.persistence.entities.User;
 import com.tonlist.service.UserService;
 
