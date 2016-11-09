@@ -40,7 +40,8 @@ $(document).ready(function() {
 	 
      $(".romoveBtn").click(function(){	        	
      	var id = $(this).attr('id');
-     	var id3 = '#'+id;    	
+     	var id3 = '#'+id;   
+     	$('.conf').addClass("hidden");
      	$(id3+'.conf').removeClass("hidden");
 	       
 
