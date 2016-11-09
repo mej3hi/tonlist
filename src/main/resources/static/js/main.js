@@ -38,6 +38,21 @@ $(document).ready(function() {
      });
 	 
 	 
+     $(".romoveBtn").click(function(){	        	
+     	var id = $(this).attr('id');
+     	var id3 = '#'+id;    	
+     	$(id3+'.conf').removeClass("hidden");
+	       
+
+     });
+ 	$(".noBtn").click(function(){
+ 		var id2 = $(this).attr('id');
+ 		var id4 = '#'+id2;
+ 		$(id4+'.conf').addClass("hidden");
+ 		
+     });
+	 
+	 
 	 if(document.getElementById("searchdate"))
 		 var availableDates = $('#searchdate').data("dates").split(",");
 
@@ -56,6 +71,16 @@ $(document).ready(function() {
 	        return confirm('Are you sure?');
 	    });
 	 
+	    
+	 
+	        $("#noo").click(function(){
+	            $("p").hide();
+	        });
+	        
+
+	        
+	  
+	    
 	 
 	 //$('#timepicker1').timepicker('setTime', '12:45 AM');
 });

@@ -76,7 +76,33 @@ h5{
 	
 }
 
+.hidden{
+	display: none;
+}
 
+.conf{
+    position: absolute;
+    background-color: white;
+    bottom: 0;
+    right: 0;
+    padding: 50px;
+    margin-right: 130px;
+    margin-bottom: 0px;
+    border-radius: 4px;
+}
+
+.noBtn{
+	width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+	
+}
+
+.yesBtn{
+	width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
 .form-signin
 {

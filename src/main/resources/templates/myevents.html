@@ -44,12 +44,18 @@
 			
 			<div class="row btn-margin">
 				<div class="col-md-3">
-				<a class="btn btn-warning btn-block" th:href="'/editEvent?id=' + ${event.id}" role="button">Edit</a>
+					<a class="btn btn-warning btn-block" th:href="'/editEvent?id=' + ${event.id}" role="button">Edit</a>
 				</div>
 				<div class="col-md-3">
-				<a class="btn btn-danger btn-block" th:href="'/removeEvent?id=' + ${event.id}" role="button">Remove</a>		
+					<button th:id="${event.id}" class= "romoveBtn btn btn-danger btn-block">Romove</button>
 				</div>
-				<p><a class="confirmation" th:href="'/removeEvent?id=' + ${event.id}">remove</a></p>
+				
+				<div th:id="${event.id}" class="conf hidden">
+					<p>Are you sure you want to remove event</p> 
+					<a class="btn btn-default yesBtn" th:href="'/removeEvent?id=' + ${event.id}" role="button">Yes</a>
+					<button th:id="${event.id}" class="noBtn btn btn-default">No</button>
+				</div>
+								
 			</div>					    	  
 
         </div>

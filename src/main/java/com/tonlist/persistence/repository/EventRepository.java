@@ -18,7 +18,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     
     Event findByUsernameAndId(String username, Long id);
     
-    @Query(value = "SELECT * FROM EVENTS WHERE DATE >= CURDATE() ORDER BY DATE ASC LIMIT 6", nativeQuery = true)
+    @Query(nativeQuery = true, value = "SELECT * FROM EVENTS WHERE DATE >= CURDATE() ORDER BY DATE ASC LIMIT 6")
     List<Event> findFirst6ByOrderByDateAsc();
     
     @Transactional
@@ -27,7 +27,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     @Transactional
     void deleteByUsernameAndId(String username, Long id);
     
-    @Query(value = "SELECT DATE FROM EVENTS WHERE DATE >= CURDATE() GROUP BY DATE", nativeQuery = true)
+    @Query(nativeQuery = true, value = "SELECT DATE FROM EVENTS WHERE DATE >= CURDATE() GROUP BY DATE")
     Date[] findAllDates();
     
 }
