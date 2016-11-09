@@ -11,7 +11,7 @@
 			<input id="searchdate" type="text" readonly="readonly" th:attr="data-dates=${dates}" />
 	</div>
     	
-
+		<h1 th:if="${day != null}" th:text="${#calendars.format(day,'dd MMMM yyyy')}"></h1>
     
     	<h5 th:if="${#lists.isEmpty(events)}">No Events</h5>
     	
