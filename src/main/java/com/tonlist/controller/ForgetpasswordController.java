@@ -29,15 +29,27 @@ public class ForgetpasswordController {
 	@Autowired
 	private MimeMailSender mimeMailSender;
 
-	
+	/**
+	 * Get called when Get mapping url ("/forgetPassword") is accessed with GET.
+	 * It open forgot form page for the user. 
+	 * @return forgetPassword html page.
+	 */
 	@GetMapping("/forgetPassword")
-	public String resetPasswordView(final Model model) {
+	public String forgetPassword() {
 		return "forgetPassword";
 	}
 
-	
+	/**
+	 * Get called when Post mapping url ("/forgetPassword") is accessed with POST.
+	 * It send mail to the user with with link to restore his password.
+	 * @param email Is the email from the form.
+	 * @param model Send over msg for the email.
+	 * @return forgetPassword html page.
+	 * @throws MessagingException
+	 * @throws IOException
+	 */
 	@PostMapping("/forgetPassword")
-	public String forgetPassword(@RequestParam("email") String email,Model model) throws MessagingException, IOException {
+	public String  postForgetPassword(@RequestParam("email") String email,Model model) throws MessagingException, IOException {
 				
 		User foundUser = userService.findByEmail(email);
 	

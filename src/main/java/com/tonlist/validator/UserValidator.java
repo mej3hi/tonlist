@@ -11,6 +11,11 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+/**
+ * 
+ * Validate the sign up form.
+ *
+ */
 @Component
 public class UserValidator implements Validator {
     @Autowired

@@ -33,7 +33,12 @@ public class EventController {
     @Autowired
     private FileManager fileManager;
     
-
+    /**
+     * Get called when Get mapping url ("/createEvent") is accessed with GET.
+     * It open event form for the user to fill out.
+     * @param model Create new Event for the form.
+     * @return createEvent html page.
+     */  
     @GetMapping("/createEvent")
     String createEvent(Model model){	
 		model.addAttribute("event", new Event());
@@ -41,6 +46,15 @@ public class EventController {
 		return "createEvent";
     }
 	
+    /**
+     * Get called when Post mapping url ("/createEvent") is accessed with POST.
+     * It store event form that user has create to database.
+     * @param event Get the value from the form.
+     * @param file Is the image from the form.
+     * @param bindingResult It validate the form.
+     * @param model Send over erro msg for the image. 
+     * @return createEvent html page.
+     */
     @PostMapping("/createEvent")
     public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
     	
@@ -78,6 +92,12 @@ public class EventController {
         return "redirect:/myevents";
     }
     
+    /**
+     * Get called when Get mapping url ("/myevents") is accessed with GET.
+     * It finds all events that user has made.
+     * @param model Send events over. 
+     * @return myevents html page.
+     */
     @GetMapping("/myevents")
     String myEvent(Model model){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -87,6 +107,12 @@ public class EventController {
     	return "myevents";
     }
     
+    /**
+     * Get called when Get mapping url ("/removeEvent") is accessed with GET.
+     * It allow user to remove his own events. 
+     * @param id Is the ID of event.
+     * @return redirect:/myevents html page.
+     */
     @GetMapping("/removeEvent")
     String removeEvent(@RequestParam Long id){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -95,6 +121,13 @@ public class EventController {
     	return "redirect:/myevents";
     }
     
+    /**
+     * Get called when Get mapping url ("/editEvent") is accessed with GET.
+     * It allow user to edit his events.
+     * @param id Is the ID of event.
+     * @param model Send event over. 
+     * @return editEvent html page.
+     */
     @GetMapping("/editEvent")
     String editEvent(@RequestParam Long id, Model model){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -104,6 +137,15 @@ public class EventController {
     	return "editEvent";
     }
     
+    /**
+     * Get called when Post mapping url ("/editEvent") is accessed with POST.
+     * It store event form that user has edit to database.
+     * @param event Get the value from the form.
+     * @param file Is the image from the form.
+     * @param bindingResult It validate the form.
+     * @param model Send over erro msg for the image. 
+     * @return redirect:/myevents html page.
+     */
     @PostMapping("/editEvent")
     public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
     	System.out.println("lala: "+event.getImageurl());

@@ -17,11 +17,19 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 
+ * It handle sign in.
+ *
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
-
+    
+    /**
+     * Find usename in database and make spring security give it allowed permission.
+     */
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

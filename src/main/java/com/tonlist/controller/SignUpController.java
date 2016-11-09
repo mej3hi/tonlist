@@ -7,8 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import com.tonlist.persistence.entities.User;
 import com.tonlist.service.SecurityService;
@@ -28,6 +27,12 @@ public class SignUpController {
     @Autowired
     private UserValidator userValidator;
 	
+    /**
+     * Get called when Get mapping url ("/signUp") is accessed with GET.
+     * It open registration form for the user to fill out.
+     * @param model Create new User for the form.
+     * @return signUp html page.
+     */
 	@GetMapping("/signUp")
     String signUp(Model model){	
 		model.addAttribute("userForm", new User());
@@ -35,6 +40,13 @@ public class SignUpController {
 		return "signUp";
     }
 	
+	/**
+	 * Get called when Post mapping url ("/signUp") is accessed with POST.
+	 * @param userForm Get the registration value from the form.
+	 * @param bindingResult  It validate the form.
+	 * @param model
+	 * @return redirect:/ html page.
+	 */
     @PostMapping("/signUp")
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
         userValidator.validate(userForm, bindingResult);

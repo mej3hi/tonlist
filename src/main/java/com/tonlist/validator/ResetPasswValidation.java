@@ -2,6 +2,10 @@ package com.tonlist.validator;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * Validate the Reset Password form.
+ */
 @Component
 public class ResetPasswValidation {
 

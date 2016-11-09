@@ -13,6 +13,11 @@ import org.springframework.validation.Validator;
 
 import com.tonlist.persistence.entities.Event;
 
+/**
+ * 
+ * Validate the event form.
+ * 
+ */
 @Component
 public class EventValidator implements Validator {
 	@Override

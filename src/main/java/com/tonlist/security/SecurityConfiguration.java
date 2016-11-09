@@ -10,6 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
+/**
+ * It handle what page are allowed to see.
+ * Handle sign in and sign out.
+ */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -23,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }    
 	
-
+  
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity 

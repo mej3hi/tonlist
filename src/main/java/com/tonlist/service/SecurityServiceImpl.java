@@ -10,6 +10,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+/**
+ * It handle the sign up auto login when create new user.
+ * 
+ */
+
 @Service
 public class SecurityServiceImpl implements SecurityService{
     @Autowired
@@ -19,7 +24,11 @@ public class SecurityServiceImpl implements SecurityService{
     private UserDetailsService userDetailsService;
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
-
+    
+    
+    /**
+     * Find login user.
+     */
     @Override
     public String findLoggedInUsername() {
         Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
@@ -29,7 +38,10 @@ public class SecurityServiceImpl implements SecurityService{
 
         return null;
     }
-
+    
+    /**
+     *  It auto login in user. 
+     */
     @Override
     public void autologin(String username, String password) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);

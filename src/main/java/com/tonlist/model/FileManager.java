@@ -28,6 +28,13 @@ public class FileManager {
 	private static final String SUFFIX = "/";
 	private static final String UNDERSCORE = "_";
 
+	/**
+	 * It store the image to amazon S3 database. 
+	 * @param file The image to store.
+	 * @param username Add the username to image name.
+	 * @param eventName Add the Event name to image name.
+	 * @return It return link for image or erro string.
+	 */
 	public String storeFile(MultipartFile file, String username, String eventName) {
 
 		String[] splitType = file.getOriginalFilename().split("\\.");

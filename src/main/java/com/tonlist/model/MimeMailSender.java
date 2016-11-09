@@ -14,6 +14,13 @@ public class MimeMailSender {
 	@Autowired
 	private JavaMailSender mailSender;	
 	
+	/**
+	 * It send email to given email address.
+	 * @param to The email address.
+	 * @param subject The subject about email.
+	 * @param body The text to send.
+	 * @throws MessagingException
+	 */
 	public void sendMail(String to, String subject, String body) throws MessagingException {
 		
 		MimeMessage message = mailSender.createMimeMessage();

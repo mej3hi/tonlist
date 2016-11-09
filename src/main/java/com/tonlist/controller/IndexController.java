@@ -21,6 +21,12 @@ public class IndexController {
     @Autowired
     private EventService eventService;
 	
+    /**
+     * Get called when Get mapping url ("/") is accessed with GET.
+     * It open the main page.
+     * @param model Send over events and dates.
+     * @return index html page.
+     */
 	@GetMapping("/")
     String index(Model model){
 		List<Event> events = eventService.findFirst6ByOrderByDateAsc();
