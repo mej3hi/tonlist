@@ -37,12 +37,15 @@
 			    </div>	 
 			       
 			    <div class="row">  	    
-			    	<div class="col-md-6">			    	
+			    	<div class="col-md-6">		    			    		
+			    		<label>Time : </label>			    	
 			    		<h5 id="eventtime" th:text="${event.time}"></h5>
-			    		<h5 id="eventdata" th:text="${#calendars.format(event.date,'dd MMMM yyyy')}"></h5>
-			    	</div>	    	
+			    		<label>  Date : </label>
+			    		<h5 id="eventdata" th:text="${#calendars.format(event.date,'dd MMMM yyyy')}"></h5>			    			    		
+			    	</div>			    		    	
 				    <div class="col-md-6">
-			    		 <p id="eventgenres" th:text="${event.musicgenres}"></p>
+				    	<label>Music type : </label>
+			    		<p id="eventgenres" th:text="${event.musicgenres}"></p>
 			    	</div>	    	    
 			    </div>
 		    </div>    	    	  
