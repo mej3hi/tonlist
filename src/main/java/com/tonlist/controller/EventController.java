@@ -57,7 +57,8 @@ public class EventController {
      */
     @PostMapping("/createEvent")
     public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
-    	
+    		event.setImageurl("");
+    		
 	    	if(file.isEmpty()){
 	    		event.setImageurl("NoImage");
 	    	}
@@ -144,8 +145,9 @@ public class EventController {
      */
     @PostMapping("/editEvent")
     public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
-  
-    	if(file.isEmpty() && event.getImageurl() == null){
+    	String imgurl = event.getImageurl();
+    	
+    	if(file.isEmpty() && event.getImageurl()==null){
     		event.setImageurl("NoImage");
     	}
     	
@@ -155,8 +157,10 @@ public class EventController {
 
     	eventValidator.validate(event, bindingResult);
                
-        if (bindingResult.hasErrors()) 
+        if (bindingResult.hasErrors()){
+        	event.setImageurl(imgurl);
             return "editEvent";
+        }
         
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         
