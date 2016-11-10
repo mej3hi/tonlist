@@ -53,7 +53,13 @@ public class EventValidator implements Validator {
 		if (event.getDescription().length() < 3 || event.getDescription().length() > 250) {
 			errors.rejectValue("description", "Size.eventForm.description");
 		}
-
+		
+		if(event.getImageurl().equals("NoImage"))
+			errors.rejectValue("imageurl", "Size.eventForm.noImage");
+		
+		if(event.getImageurl().equals("SizeErr"))
+			errors.rejectValue("imageurl", "Size.eventForm.sizeErr");
+			
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "musicgenres", "NotEmpty");
 		
 	}

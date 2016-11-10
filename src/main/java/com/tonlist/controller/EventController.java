@@ -59,15 +59,11 @@ public class EventController {
     public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
     	
 	    	if(file.isEmpty()){
-	    		String noImage = "Please choose picture";
-				model.addAttribute("erroImage", noImage);
-	    		return "createEvent";
+	    		event.setImageurl("NoImage");
 	    	}
 	    	
 	    	if(file.getSize() > 2097152){
-	    		String imageToBig = "The picture is to big, Max size 2mb";
-				model.addAttribute("erroImage", imageToBig);
-	    		return "createEvent";
+				event.setImageurl("SizeErr");
 	    	}
      	
     	eventValidator.validate(event, bindingResult);
@@ -150,15 +146,11 @@ public class EventController {
     public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
   
     	if(file.isEmpty() && event.getImageurl() == null){
-    		String noImage = "Please choose picture";
-			model.addAttribute("erroImage", noImage);
-    		return "editEvent";
+    		event.setImageurl("NoImage");
     	}
     	
     	if(!file.isEmpty() && file.getSize() > 2097152){
-    		String imageToBig = "The picture is to big, Max size 2mb";
-			model.addAttribute("erroImage", imageToBig);
-    		return "editEvent";
+    		event.setImageurl("SizeErr");
     	}
 
     	eventValidator.validate(event, bindingResult);
