@@ -10,7 +10,7 @@
 		            <h1 class="text-center login-title">Create Event</h1>
 		             <div class="account-wall">	                    
 		                <form class="form-signin" th:action="@{/createEvent}" th:object="${event}" method="post" enctype="multipart/form-data">
-			                <input type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" />
+<!-- 			                <input type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" /> -->
 			                			               
 			               <div class="row">
 			               
@@ -40,7 +40,7 @@
 			                				<input id="imgInp" type="file" name="file" accept="image/*" />
 					                	<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('imageurl')}" th:errors="*{imageurl}" ></div>
 					                	<div class="alert alert-danger" role="alert" th:text="${erroImage}" th:if="${erroImage}" ></div>
-					                	<img id="imgEvent" src="#" th:src="@{/static/images/icon_picture.png}" height="200" width="355" />
+					                	<img id="imgEvent" src="#" th:src="@{/static/images/icon_picture.png}" />
 					                </div>			               		
 			               		</div>
 			               		

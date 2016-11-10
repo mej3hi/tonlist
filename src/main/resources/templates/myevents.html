@@ -32,10 +32,8 @@
 			    </div>	 
 			       
 			    <div class="row">  	    
-			    	<div class="col-md-6">		    			    		
-			    		<label>Time : </label>			    	
+			    	<div class="col-md-6">		    			    					    	
 			    		<h5 id="eventtime" th:text="${event.time}"></h5>
-			    		<label>  Date : </label>
 			    		<h5 id="eventdata" th:text="${#calendars.format(event.date,'dd MMMM yyyy')}"></h5>			    			    		
 			    	</div>			    		    	
 				    <div class="col-md-6">
@@ -50,7 +48,7 @@
 					<a class="btn btn-warning btn-block" th:href="'/editEvent?id=' + ${event.id}" role="button">Edit</a>
 				</div>
 				<div class="col-md-3">
-					<button th:id="${event.id}" class= "romoveBtn btn btn-danger btn-block">Romove</button>
+					<button th:id="${event.id}" class= "romoveBtn btn btn-danger btn-block">Remove</button>
 				</div>
 				
 				<div th:id="${event.id}" class="conf hidden">

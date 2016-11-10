@@ -192,11 +192,25 @@ h5{
    padding-right:10px;
     width: 100%;
 }
-#searchdate
-{
-	margin-left: 45%;
+
+#imgEvent{
+	padding-right:10px;
+    width: 100%;
 }
 
+#searchdate
+{
+	width: 60%;
+    margin: auto;
+    height: 40px;
+}
+
+
+.currentDay{
+	margin: auto;
+    margin-left: 10%;
+	
+}
 /*-----------------create event --------------------------*/
 
 #imgInp

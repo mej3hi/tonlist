@@ -40,8 +40,8 @@
 			                				<input id="imgInp" type="file" name="file" accept="image/*" />
 					                	<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('imageurl')}" th:errors="*{imageurl}" ></div>
 					                	<div class="alert alert-danger" role="alert" th:text="${erroImage}" th:if="${erroImage}" ></div>
-					                	<img th:if="*{imageurl == null}" id="imgEvent" src="#" th:src="@{/static/images/icon_picture.png}" height="200" width="355" />
-					                	<img th:unless="*{imageurl == null}" id="imgEvent" src="#" th:src="*{imageurl}" height="200" width="355" />
+					                	<img th:if="*{imageurl == null}" id="imgEvent" src="#" th:src="@{/static/images/icon_picture.png}"/>
+					                	<img th:unless="*{imageurl == null}" id="imgEvent" src="#" th:src="*{imageurl}" />
 					                </div>			               		
 			               		</div>
 			               		

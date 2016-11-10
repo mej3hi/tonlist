@@ -7,11 +7,15 @@
     <div th:fragment="content">
 
 	<div class="row">
-		
-			<input id="searchdate" type="text" readonly="readonly" th:attr="data-dates=${dates}" />
+		<div class="col-md-4">
+			<h3 class="currentDay" th:if="${day != null}" th:text="${#calendars.format(day,'dd MMMM yyyy')}"></h3>
+		</div>
+	
+		<div class="col-md-4 col-md-offset 4">
+			<input id="searchdate" class="form-control" placeholder="Choose date" type="text" readonly="readonly" th:attr="data-dates=${dates}" />		
+		</div>			
+			
 	</div>
-    	
-		<h1 th:if="${day != null}" th:text="${#calendars.format(day,'dd MMMM yyyy')}"></h1>
     
     	<h5 th:if="${#lists.isEmpty(events)}">No Events</h5>
     	
@@ -37,10 +41,8 @@
 			    </div>	 
 			       
 			    <div class="row">  	    
-			    	<div class="col-md-6">		    			    		
-			    		<label>Time : </label>			    	
+			    	<div class="col-md-6">		    			    				    	
 			    		<h5 id="eventtime" th:text="${event.time}"></h5>
-			    		<label>  Date : </label>
 			    		<h5 id="eventdata" th:text="${#calendars.format(event.date,'dd MMMM yyyy')}"></h5>			    			    		
 			    	</div>			    		    	
 				    <div class="col-md-6">
