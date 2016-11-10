@@ -50,7 +50,7 @@ public class EventValidator implements Validator {
 		}
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "NotEmpty");
-		if (event.getDescription().length() < 3 || event.getDescription().length() > 500) {
+		if (event.getDescription().length() < 3 || event.getDescription().length() > 250) {
 			errors.rejectValue("description", "Size.eventForm.description");
 		}
 
