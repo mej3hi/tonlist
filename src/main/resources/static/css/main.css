@@ -5,6 +5,12 @@
 }
 main{
 	background-color: #d4d4d4;
+
+}
+
+
+.error{
+	margin-bottom: 50%;
 }
 
 p{
@@ -211,7 +217,7 @@ h5{
     margin-left: 10%;
 	
 }
-/*-----------------create event --------------------------*/
+
 
 #imgInp
 {
