@@ -148,19 +148,17 @@ public class EventController {
      */
     @PostMapping("/editEvent")
     public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
-    	System.out.println("lala: "+event.getImageurl());
-    	if( !file.isEmpty() || event.getImageurl() == null){
-	    	if(file.isEmpty()){
-	    		String noImage = "Please choose picture";
-				model.addAttribute("erroImage", noImage);
-	    		return "createEvent";
-	    	}
-	    	
-	    	if(file.getSize() > 2097152){
-	    		String imageToBig = "The picture is to big, Max size 2mb";
-				model.addAttribute("erroImage", imageToBig);
-	    		return "createEvent";
-	    	}
+  
+    	if(file.isEmpty() && event.getImageurl() == null){
+    		String noImage = "Please choose picture";
+			model.addAttribute("erroImage", noImage);
+    		return "editEvent";
+    	}
+    	
+    	if(!file.isEmpty() && file.getSize() > 2097152){
+    		String imageToBig = "The picture is to big, Max size 2mb";
+			model.addAttribute("erroImage", imageToBig);
+    		return "editEvent";
     	}
 
     	eventValidator.validate(event, bindingResult);
@@ -176,7 +174,7 @@ public class EventController {
 	    	if(s == "erro"){
 	    		String imageS3Erro = "Faild to store image in our database, Please try again";
 				model.addAttribute("erroImage", imageS3Erro);
-	    		return "createEvent";
+	    		return "editEvent";
 	    	}
 	    	
 	        event.setImageurl(s);
