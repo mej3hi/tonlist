@@ -38,7 +38,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
      * Find first six event that is from this day and up.
      * @return List of events
      */
-    @Query(nativeQuery = true, value = "SELECT * FROM EVENTS WHERE DATE >= CURDATE() ORDER BY DATE ASC LIMIT 6")
+    @Query(nativeQuery = true, value = "select * from events where date >= curdate() order by date asc limit 6")
     List<Event> findFirst6ByOrderByDateAsc();
     
   
@@ -57,7 +57,8 @@ public interface EventRepository extends JpaRepository<Event, Long> {
      * Find all date in the event database. 
      * @return Array of date.
      */
-    @Query(nativeQuery = true, value = "SELECT DATE FROM EVENTS WHERE DATE >= CURDATE() GROUP BY DATE")
+
+    @Query(nativeQuery = true, value = "select date from events where date >= curdate() group by date")
     Date[] findAllDates();
     
 }
