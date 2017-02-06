@@ -7,10 +7,10 @@
     <div th:fragment="content">
 
 	<div class="row">
-<<<<<<< HEAD
+
 		
 			<input id="searchdate" type="text" readonly="readonly" placeholder="Pick a date" th:attr="data-dates=${dates}" />
-=======
+
 		<div class="col-md-4">
 			<h3 class="currentDay" th:if="${day != null}" th:text="${#calendars.format(day,'dd MMMM yyyy')}"></h3>
 		</div>
@@ -19,7 +19,7 @@
 			<input id="searchdate" class="form-control" placeholder="Choose date" type="text" readonly="readonly" th:attr="data-dates=${dates}" />		
 		</div>			
 			
->>>>>>> branch 'master' of https://github.com/mej3hi/tonlist.git
+
 	</div>
     
     	<h5 th:if="${#lists.isEmpty(events)}">No Events</h5>
