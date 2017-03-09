@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,7 +42,7 @@ public class EventMobController {
      * @return  Empty json String.
      */    
 	 @PostMapping("/m/createEvent")
-	    public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
+	    public String postEvent(@RequestBody Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
 	    		event.setImageurl("");
 	    		
 		    	if(file.isEmpty()){
@@ -114,7 +115,7 @@ public class EventMobController {
 	     * @return redirect:/myevents html page.
 	     */
 	    @PostMapping("/m/editEvent")
-	    public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
+	    public String postEditEvent(@RequestBody Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
 	    	String imgurl = event.getImageurl();
 	    
 	    	if(file.isEmpty() && event.getImageurl()==null){
