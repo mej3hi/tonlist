@@ -31,8 +31,7 @@ public class ResetPassMobController {
 	 */
 	@PostMapping("/m/resetPassword")
 	public String postResetPassword(@RequestParam(value = "_key") String resetPasswordToken,
-			@RequestParam("password") String password, @RequestParam("passwordConfirm") String passwordConfirm,
-			final Model model) {
+			@RequestParam("password") String password, @RequestParam("passwordConfirm") String passwordConfirm) {
 		
 		String PasswordValidation = resetPasswValidation.validate(password, passwordConfirm);
 		

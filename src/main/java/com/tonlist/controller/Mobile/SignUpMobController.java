@@ -1,10 +1,16 @@
 package com.tonlist.controller.Mobile;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tonlist.persistence.entities.User;
@@ -32,18 +38,28 @@ public class SignUpMobController {
 	 * @return redirect:/ html page.
 	 */
     @PostMapping("/m/signUp")
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    public String registration(@RequestBody User userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
         
-        
-        if (bindingResult.hasErrors()) 
-            return "signUp";
+        if (userService.findByUsername(userForm.getUsername()) != null){
+        	System.out.println("til username ");
+        	return "username";
+        }
+       
+        if (bindingResult.hasErrors()){
+        	
+        	System.out.println("bindingresult ");
+        	return "signUp";
+        }
+            
         
 
         userService.save(userForm);
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         
+    	System.out.println("komst hinga ");
+    	
         return "[]";
     }	
     

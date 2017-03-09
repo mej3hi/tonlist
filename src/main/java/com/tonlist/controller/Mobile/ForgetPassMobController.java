@@ -37,7 +37,7 @@ public class ForgetPassMobController {
 	 * @throws IOException
 	 */
 	@PostMapping("/m/forgetPassword")
-	public String postForgetPassword(@RequestParam("email") String email,Model model) throws MessagingException, IOException {
+	public String postForgetPassword(@RequestParam("email") String email) throws MessagingException, IOException {
 				
 		User foundUser = userService.findByEmail(email);
 	

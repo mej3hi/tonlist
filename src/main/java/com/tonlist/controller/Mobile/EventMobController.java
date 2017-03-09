@@ -41,7 +41,7 @@ public class EventMobController {
      * @return  Empty json String.
      */    
 	 @PostMapping("/m/createEvent")
-	    public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
+	    public String postEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
 	    		event.setImageurl("");
 	    		
 		    	if(file.isEmpty()){
@@ -81,7 +81,7 @@ public class EventMobController {
 	     * @return List of events.
 	     */
 	    @GetMapping("/m/myevents")
-	    public List<Event> myEvent(Model model){
+	    public List<Event> myEvent(){
 	    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
 	    	List<Event> events = eventService.findByUsername(username);
 	    	//model.addAttribute("events", events);
@@ -114,7 +114,7 @@ public class EventMobController {
 	     * @return redirect:/myevents html page.
 	     */
 	    @PostMapping("/m/editEvent")
-	    public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult, Model model) {
+	    public String postEditEvent(@ModelAttribute Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
 	    	String imgurl = event.getImageurl();
 	    
 	    	if(file.isEmpty() && event.getImageurl()==null){
@@ -139,7 +139,7 @@ public class EventMobController {
 		    	
 		    	if(s == "erro"){
 		    		String imageS3Erro = "Faild to store image in our database, Please try again";
-					model.addAttribute("erroImage", imageS3Erro);
+					
 		    		return "[]";
 		    	}
 		    	

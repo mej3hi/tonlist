@@ -59,10 +59,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    public static class ApiWebSecurityConfig extends WebSecurityConfigurerAdapter{
 	    	@Override
 	    	protected void configure(HttpSecurity http) throws Exception {
-	            http
+	            http.csrf().disable()
                 .antMatcher("/m/**")
                 .authorizeRequests()
-                	.antMatchers("/m/").permitAll()
+                	.antMatchers("/m/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .httpBasic();	
@@ -82,7 +82,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	        		.and()
 	    		.formLogin()
 	    			.loginPage("/signIn")
-	    			.defaultSuccessUrl("/",false)
+	    			.defaultSuccessUrl("/",true)
 	    			.permitAll()
 	    			.and()
 				.logout()
