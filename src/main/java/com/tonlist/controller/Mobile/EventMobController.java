@@ -58,6 +58,7 @@ public class EventMobController {
 	        if (bindingResult.hasErrors()) 
 	            return "[]";
 	        
+	        
 	        String username = SecurityContextHolder.getContext().getAuthentication().getName();
 	        
 	    	String s = fileManager.storeFile(file, username, event.getName());
