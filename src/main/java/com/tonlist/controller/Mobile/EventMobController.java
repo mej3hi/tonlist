@@ -32,6 +32,8 @@ public class EventMobController {
     @Autowired
     private FileManager fileManager;
 	
+
+    
     /**
      * Get called when Post mapping url ("/m/createEvent") is accessed with POST.
      * It store event form that user has create to database.
@@ -42,8 +44,9 @@ public class EventMobController {
      * @return  Empty json String.
      */    
 	 @PostMapping("/m/createEvent")
-	    public String postEvent(@RequestBody Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
-	    		event.setImageurl("");
+	    public String postEvent(@RequestParam("file") MultipartFile file, @ModelAttribute Event event, BindingResult bindingResult) { 	
+		 
+		 event.setImageurl("");
 	    		
 		    	if(file.isEmpty()){
 		    		event.setImageurl("NoImage");
@@ -55,12 +58,12 @@ public class EventMobController {
 	     	
 	    	eventValidator.validate(event, bindingResult);
 	               
-	        if (bindingResult.hasErrors()) 
+	        if (bindingResult.hasErrors()){ 
+	        
+	        	 System.out.println("errro "+bindingResult.getFieldErrors().get(0));
 	            return "[]";
-	        
-	        
+	        }
 	        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-	        
 	    	String s = fileManager.storeFile(file, username, event.getName());
 	    	
 	    	if(s == "erro"){
@@ -68,6 +71,8 @@ public class EventMobController {
 				//model.addAttribute("erroImage", imageS3Erro);
 	    		return "createEvent";
 	    	}
+	    	
+	    	System.out.println("Fara  að sava og user name er "+username);
 	    	
 	    	event.setUsername(username);
 	        event.setImageurl(s);
