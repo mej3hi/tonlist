@@ -9,7 +9,6 @@
 	<div class="row">
 
 		
-			<input id="searchdate" type="text" readonly="readonly" placeholder="Pick a date" th:attr="data-dates=${dates}" />
 
 		<div class="col-md-4">
 			<h3 class="currentDay" th:if="${day != null}" th:text="${#calendars.format(day,'dd MMMM yyyy')}"></h3>

@@ -59,13 +59,17 @@ $(document).ready(function() {
 
 	     $('#searchdate').datepicker({ 
 	    	 beforeShowDay: function (date) {
-	    	        var dt_ddmmyyyy = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+	    	        var dt_ddmmyyyy = f(date.getDate()) + '-' + f((date.getMonth() + 1)) + '-' + date.getFullYear();
 	    	        return (availableDates.indexOf(dt_ddmmyyyy) != -1);
 	    	    },
 	    	    format: "dd-mm-yyyy"
 	     }).on('changeDate', function (e) {
 	    	 if(this.value != "")
 	    		 window.location.href = "calander?day=" + this.value;});
+	     
+		    function f(x){
+		    	return ("0"+x).slice(-2);
+		    }
 
 	 
 	    $('.confirmation').on('click', function () {
