@@ -1,5 +1,9 @@
 package com.tonlist.controller;
 
+import java.util.Enumeration;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +53,8 @@ public class SignUpController {
 	 */
     @PostMapping("/signUp")
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    	
+    	
         userValidator.validate(userForm, bindingResult);
         
         

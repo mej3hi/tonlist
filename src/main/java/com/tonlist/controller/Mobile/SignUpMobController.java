@@ -42,25 +42,18 @@ public class SignUpMobController {
         userValidator.validate(userForm, bindingResult);
         
         if (userService.findByUsername(userForm.getUsername()) != null){
-        	System.out.println("til username ");
-        	return "username";
+        	return "\"username_exists\"";
         }
        
         if (bindingResult.hasErrors()){
-        	
-        	System.out.println("bindingresult ");
-        	return "signUp";
+        	return "\"hasErrors\"";
         }
-            
-        
-
+                   
         userService.save(userForm);
 
-        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-        
-    	System.out.println("komst hinga ");
+        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());       
     	
-        return "[]";
+        return "\"ok\"";
     }	
     
     

@@ -9,7 +9,8 @@ public class SignInMobController {
 	@GetMapping("/m/signIn")
 	public String name() {
 		
-		return "[]";
+		return "\"ok\"";
 	}
+	
 
 }

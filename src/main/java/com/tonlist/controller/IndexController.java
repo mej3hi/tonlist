@@ -34,6 +34,8 @@ public class IndexController {
 		String dates = ConvertTools.arrayToString(eventService.findAllDates());
 		model.addAttribute("dates", dates);
 		
+	 
+		
 		return "index";
     }
 }
