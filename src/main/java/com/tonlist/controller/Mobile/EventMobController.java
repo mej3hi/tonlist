@@ -104,10 +104,11 @@ public class EventMobController {
 	     */
 	    @GetMapping("/m/removeEvent")
 	    public String removeEvent(@RequestParam Long id){
+	    	System.out.println(id);
 	    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
 	    	eventService.deletebyUsernameAndId(username, id);
 	    	
-	    	return "[]";
+	    	return "\"Event successfully removed\"";
 	    }
 	    
 	    
@@ -121,8 +122,7 @@ public class EventMobController {
 	     * @return redirect:/myevents html page.
 	     */
 	    @PostMapping("/m/editEvent")
-	    public String postEditEvent(@RequestBody Event event, @RequestParam("file") MultipartFile file, BindingResult bindingResult) {
-	    	String imgurl = event.getImageurl();
+	    public String postEditEvent(@RequestParam("file") MultipartFile file, @ModelAttribute Event event, BindingResult bindingResult) {
 	    
 	    	if(file.isEmpty() && event.getImageurl()==null){
 	    		event.setImageurl("NoImage");
@@ -135,28 +135,31 @@ public class EventMobController {
 	    	eventValidator.validate(event, bindingResult);
 	               
 	        if (bindingResult.hasErrors()){
-	        	event.setImageurl(imgurl);
-	            return "[]";
+	        	System.out.println("error");
+	        	System.out.println(bindingResult.getFieldError());
+	            return "\"Please contact us\"";
 	        }
 	        
 	        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+	        System.out.println(username);
+	        System.out.println(event.getId());
 	        
 	        if(!file.isEmpty()){
 		    	String s = fileManager.storeFile(file, username, event.getName());
 		    	
 		    	if(s == "erro"){
-		    		String imageS3Erro = "Faild to store image in our database, Please try again";
+		    		String imageS3Erro = "\"Failed to store image in our database, Please try again\"";
 					
-		    		return "[]";
+		    		return imageS3Erro;
 		    	}
 		    	
 		        event.setImageurl(s);
 	        }
-	               
+	        
+	        event.setUsername(username);
 	        eventService.save(event);
 	        
-	        return "[]";
+	        return "\"Event successfully saved\"";
 	    }
 	    
-
 }
