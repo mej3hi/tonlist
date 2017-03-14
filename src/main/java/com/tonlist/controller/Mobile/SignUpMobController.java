@@ -41,15 +41,24 @@ public class SignUpMobController {
     public String registration(@RequestBody User userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
         
-        if (userService.findByUsername(userForm.getUsername()) != null){
-        	return "\"username_exists\"";
-        }
        
         if (bindingResult.hasErrors()){
+        	
+	        List<FieldError> a =bindingResult.getFieldErrors("username");
+	        
+	        for (FieldError fieldError : a) {
+	        	String rejectedValue = fieldError.getRejectedValue().toString();
+	        	if(rejectedValue.equals(userForm.getUsername())){
+	        		return "\"username_exists\"";
+	        	}
+	         	        	
+			}
+	              	
         	return "\"hasErrors\"";
         }
                    
         userService.save(userForm);
+        
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());       
     	
