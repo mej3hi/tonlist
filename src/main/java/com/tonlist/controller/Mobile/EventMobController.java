@@ -59,26 +59,21 @@ public class EventMobController {
 	    	eventValidator.validate(event, bindingResult);
 	               
 	        if (bindingResult.hasErrors()){ 
-	        
-	        	 System.out.println("errro "+bindingResult.getFieldErrors().get(0));
-	            return "[]";
+	            return "\"hasError\"";
 	        }
 	        String username = SecurityContextHolder.getContext().getAuthentication().getName();
 	    	String s = fileManager.storeFile(file, username, event.getName());
 	    	
 	    	if(s == "erro"){
-	    		String imageS3Erro = "Faild to store image in our database, Please try again";
-				//model.addAttribute("erroImage", imageS3Erro);
-	    		return "createEvent";
+	    		return "\"imageS3Error\"";
 	    	}
 	    	
-	    	System.out.println("Fara  að sava og user name er "+username);
 	    	
 	    	event.setUsername(username);
 	        event.setImageurl(s);
 	        eventService.save(event);
 	        
-	        return "[]";
+	        return "\"Event successfully created\"";
 	    }
 	 
 	   /**
@@ -135,9 +130,7 @@ public class EventMobController {
 	    	eventValidator.validate(event, bindingResult);
 	               
 	        if (bindingResult.hasErrors()){
-	        	System.out.println("error");
-	        	System.out.println(bindingResult.getFieldError());
-	            return "\"Please contact us\"";
+	            return "\"error\"";
 	        }
 	        
 	        String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -148,7 +141,7 @@ public class EventMobController {
 		    	String s = fileManager.storeFile(file, username, event.getName());
 		    	
 		    	if(s == "erro"){
-		    		String imageS3Erro = "\"Failed to store image in our database, Please try again\"";
+		    		String imageS3Erro = "\"error\"";
 					
 		    		return imageS3Erro;
 		    	}
