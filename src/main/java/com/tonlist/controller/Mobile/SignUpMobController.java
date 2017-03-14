@@ -49,6 +49,7 @@ public class SignUpMobController {
         	return "\"hasErrors\"";
         }
                    
+        
         userService.save(userForm);
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());       

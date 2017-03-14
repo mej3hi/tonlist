@@ -1,5 +1,7 @@
 package com.tonlist.controller.Mobile;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,27 +32,47 @@ public class ResetPassMobController {
 	 * @return resetPassword html page.
 	 */
 	@PostMapping("/m/resetPassword")
-	public String postResetPassword(@RequestParam(value = "_key") String resetPasswordToken,
+	public String postResetPassword(@RequestParam("token") String resetPasswordToken,
 			@RequestParam("password") String password, @RequestParam("passwordConfirm") String passwordConfirm) {
 		
 		String PasswordValidation = resetPasswValidation.validate(password, passwordConfirm);
 		
-		if (PasswordValidation != "") {
-			//model.addAttribute("passwordErro", PasswordValidation );
-			//model.addAttribute("resetPasswordToken", resetPasswordToken); 
-			return "[]";
+		if (PasswordValidation != "") { 
+			return "\"hasErrors\"";
+		}
+					
+		User user = userService.findByResetPasswordToken(resetPasswordToken);
+		Date expirationDate;
+		if (user != null) {
+			expirationDate = user.getResetpasswordexpires();
+
+			if (expirationDate.after(new Date())) {				
+				user.setPassword(password);
+				user.setResetpasswordtoken(null);
+				user.setResetpasswordexpires(null);
+				userService.save(user);
+				return "\"ok\"";
+			}
+			
+			return "\"token_expires\"";
 		}
 
-		User userToUpdate = userService.findByResetPasswordToken(resetPasswordToken);
-		userToUpdate.setPassword(password);
-		userToUpdate.setResetpasswordtoken(null);
-		userToUpdate.setResetpasswordexpires(null);
-		userService.save(userToUpdate);
-
-		String responseMessage = "Your password was successfully updated";
-		//model.addAttribute("responseMessage", responseMessage);
-		return "[]";
-
+		
+		return "\"hasErrors\"";
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	
  
