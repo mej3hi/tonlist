@@ -50,6 +50,7 @@ public class SignUpMobController {
         }
                    
         userService.save(userForm);
+        
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());       
     	
