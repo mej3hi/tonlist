@@ -27,12 +27,8 @@ public class CalanderMobController {
 	 * @return day html page
 	 */
 	@GetMapping("/m/calander")
-	public List<Event> calander(@RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") Date day){
+	public List<Event> calander(@RequestParam @DateTimeFormat(pattern = "dd/MM/yyyy") Date day){
 		List<Event> events = eventService.findByDate(day);
-
-		
-		String dates = ConvertTools.arrayToString(eventService.findAllDates());
-
 		
 		return events;
 	}
