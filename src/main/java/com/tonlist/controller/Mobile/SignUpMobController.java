@@ -44,14 +44,19 @@ public class SignUpMobController {
        
         if (bindingResult.hasErrors()){
         	
-	        List<FieldError> a =bindingResult.getFieldErrors("username");
-	        
-	        for (FieldError fieldError : a) {
+	        List<FieldError> user =bindingResult.getFieldErrors("username");	        
+	        for (FieldError fieldError : user) {
 	        	String rejectedValue = fieldError.getRejectedValue().toString();
 	        	if(rejectedValue.equals(userForm.getUsername())){
 	        		return "\"username_exists\"";
-	        	}
-	         	        	
+	        	}	         	        	
+			}
+	        List<FieldError> email =bindingResult.getFieldErrors("email");	        
+	        for (FieldError fieldError : email) {
+	        	String rejectedValue = fieldError.getRejectedValue().toString();
+	        	if(rejectedValue.equals(userForm.getEmail())){
+	        		return "\"email_exists\"";
+	        	}	         	        	
 			}
 	              	
         	return "\"hasErrors\"";
