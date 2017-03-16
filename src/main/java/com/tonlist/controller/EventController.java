@@ -1,5 +1,6 @@
 package com.tonlist.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +100,7 @@ public class EventController {
     String myEvent(Model model){
     	String username = SecurityContextHolder.getContext().getAuthentication().getName();
     	List<Event> events = eventService.findByUsername(username);
+    	Collections.reverse(events);
     	model.addAttribute("events", events);
     	
     	return "myevents";
