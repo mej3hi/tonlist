@@ -1,5 +1,6 @@
 package com.tonlist.controller.Mobile;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +87,8 @@ public class EventMobController {
 	    public List<Event> myEvent(){
 	    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
 	    	List<Event> events = eventService.findByUsername(username);
-	    	//model.addAttribute("events", events);
+	    	Collections.reverse(events);
+	    	
 	    	
 	    	return events;
 	    }
