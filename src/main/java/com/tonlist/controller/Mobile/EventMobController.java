@@ -37,12 +37,11 @@ public class EventMobController {
     
     /**
      * Get called when Post mapping url ("/m/createEvent") is accessed with POST.
-     * It store event form that user has create to database.
-     * @param event Get the value from the form.
+     * It stores event form that user has created to database.
+     * @param event contains all the values from the form.
      * @param file Is the image from the form.
-     * @param bindingResult It validate the form.
-     * @param model Send over erro msg for the image. 
-     * @return  Empty json String.
+     * @param bindingResult It validates the form. 
+     * @return message string
      */    
 	 @PostMapping("/m/createEvent")
 	    public String postEvent(@RequestParam("file") MultipartFile file, @ModelAttribute Event event, BindingResult bindingResult) { 	
@@ -80,8 +79,7 @@ public class EventMobController {
 	   /**
 	     * Get called when Get mapping url ("/m/myevents") is accessed with GET.
 	     * It finds all events that user has made.
-	     * @param model Send events over. 
-	     * @return List of events.
+	     * @return List of events in json format
 	     */
 	    @GetMapping("/m/myevents")
 	    public List<Event> myEvent(){
@@ -95,13 +93,12 @@ public class EventMobController {
 	    
 	    /**
 	     * Get called when Get mapping url ("/m/removeEvent") is accessed with GET.
-	     * It allow user to remove his own events. 
+	     * It allows user to remove his own events. 
 	     * @param id Is the ID of event.
-	     * @return Empty json String.
+	     * @return message string
 	     */
 	    @GetMapping("/m/removeEvent")
 	    public String removeEvent(@RequestParam Long id){
-	    	System.out.println(id);
 	    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
 	    	eventService.deletebyUsernameAndId(username, id);
 	    	
@@ -111,12 +108,11 @@ public class EventMobController {
 	    
 	    /**
 	     * Get called when Post mapping url ("/editEvent") is accessed with POST.
-	     * It store event form that user has edit to database.
-	     * @param event Get the value from the form.
+	     * It stores event form that user has edit to database.
+	     * @param event contains all the values from the form.
 	     * @param file Is the image from the form.
-	     * @param bindingResult It validate the form.
-	     * @param model Send over erro msg for the image. 
-	     * @return redirect:/myevents html page.
+	     * @param bindingResult It validates the form. 
+	     * @return message string
 	     */
 	    @PostMapping("/m/editEvent")
 	    public String postEditEvent(@RequestParam("file") MultipartFile file, @ModelAttribute Event event, BindingResult bindingResult) {
@@ -136,9 +132,8 @@ public class EventMobController {
 	        }
 	        
 	        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-	        System.out.println(username);
-	        System.out.println(event.getId());
-	        
+	
+	       
 	        if(!file.isEmpty()){
 		    	String s = fileManager.storeFile(file, username, event.getName());
 		    	

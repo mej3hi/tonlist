@@ -21,10 +21,9 @@ public class CalanderMobController {
     
 	/**	
 	 * Get called when Get mapping url ("/calander") is accessed with GET.
-	 * It finds all event to this day 
+	 * It finds all event for this day 
 	 * @param day Is the day to look for.
-	 * @param model Send over the events and day.
-	 * @return day html page
+	 * @return list of events in json format
 	 */
 	@GetMapping("/m/calander")
 	public List<Event> calander(@RequestParam @DateTimeFormat(pattern = "dd/MM/yyyy") Date day){

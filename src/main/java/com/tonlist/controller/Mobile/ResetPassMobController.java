@@ -24,12 +24,11 @@ public class ResetPassMobController {
 	
 	/**
 	 * Get called when Post mapping url ("/resetPassword") is accessed with POST.
-	 * It store the new password that user has create.
+	 * It stores the new password that user has created.
 	 * @param resetPasswordToken Is the token for that user.
-	 * @param password Is the password that user create.
+	 * @param password Is the password that user created.
 	 * @param passwordConfirm Is the same as password.
-	 * @param model Send over validation and success msg.
-	 * @return resetPassword html page.
+	 * @return message string
 	 */
 	@PostMapping("/m/resetPassword")
 	public String postResetPassword(@RequestParam("token") String resetPasswordToken,

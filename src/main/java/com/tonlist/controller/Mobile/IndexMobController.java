@@ -27,6 +27,11 @@ public class IndexMobController {
     @Autowired
     private EventService eventService;
 
+    /**
+     * Get called when Get mapping url ("/") is accessed with GET.
+     * It returns first 6 events
+     * @return list of events in json format
+     */
 	@GetMapping("/m/")
 	public List<Event> event(HttpServletRequest h, HttpServletResponse r){
 			

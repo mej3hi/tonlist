@@ -28,10 +28,9 @@ public class ForgetPassMobController {
 	
 	/**
 	 * Get called when Post mapping url ("/forgetPassword") is accessed with POST.
-	 * It send mail to the user with with link to restore his password.
+	 * It sends mail to the user with with a token to restore his password.
 	 * @param email Is the email from the form.
-	 * @param model Send over msg for the email.
-	 * @return forgetPassword html page.
+	 * @return String message
 	 * @throws MessagingException
 	 * @throws IOException
 	 */

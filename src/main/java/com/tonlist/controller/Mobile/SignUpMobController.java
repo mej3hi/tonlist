@@ -32,10 +32,9 @@ public class SignUpMobController {
     
 	/**
 	 * Get called when Post mapping url ("/signUp") is accessed with POST.
-	 * @param userForm Get the registration value from the form.
-	 * @param bindingResult  It validate the form.
-	 * @param model
-	 * @return redirect:/ html page.
+	 * @param userForm contains the registration values from the form.
+	 * @param bindingResult It validates the form.
+	 * @return message string
 	 */
     @PostMapping("/m/signUp")
     public String registration(@RequestBody User userForm, BindingResult bindingResult) {
