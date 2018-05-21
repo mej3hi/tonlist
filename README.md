@@ -21,13 +21,13 @@ Hægt er að hala niður forritinu á þessari síðu (clone or download)
 
 ### Myndir
 
-![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/mynd1.PNG)
+![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/myndIE1.PNG)
 
 
-![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/mynd2.PNG)
+![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/myndIE2.PNG)
 
 
-![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/mynd3.PNG)
+![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/myndIE3.PNG)
 
 
-![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/mynd4.PNG)
+![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/myndIE4.PNG)
