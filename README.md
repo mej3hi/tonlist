@@ -1,5 +1,5 @@
 # Iceland Events
-Iceland Events er vefsíðasem hægt er að nota til að skoða upplýsingar um tónleikar sem verið að halda 
+Iceland Events er vefsíða sem hægt er að nota til að skoða upplýsingar um tónleikar sem verið að halda 
 og einnugs er hægt að setja inn tónleikar með því að búa sig til aðgang að síðuna.
 
 ## Forrit 
