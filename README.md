@@ -7,8 +7,7 @@ Java Spring, MySql, Amazon S3 og einhverja email server t.d gmail
 
 ## Leiðbeiningar
 Forritið er búið til í Eclipse með Java Spring og því þarf að hafa það sett upp til að geta keyrt forritið.
-Hægt er að keyra það án Amazon S3 og email server, En til þess að setja inn tónleikar þá þarf að hafa  
-aðgang að Amazon S3 til að geyma myndinar og ef maður þarf að fá nýtt lykilorð þá þarf að hafa email server
+Hægt er að keyra það án Amazon S3 og email server, En til þess að setja inn tónleikar þá þarf að hafa aðgang að Amazon S3 til að geyma myndinar og ef maður þarf að fá nýtt lykilorð þá þarf að hafa email server
 fyrir það.
 
 ### Setja upp
