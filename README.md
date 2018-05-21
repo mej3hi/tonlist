@@ -3,10 +3,7 @@ Iceland Events er vefsíða sem hægt er að nota til að skoða upplýsingar um
 og einnugs er hægt að setja inn tónleikar með því að búa sig til aðgang að síðuna.
 
 ## Forrit 
-Java Spring 
-MySql
-Amazon S3 
-Einhverja email server t.d gmail
+Java Spring, MySql, Amazon S3 og einhverja email server t.d gmail
 
 ## Leiðbeiningar
 Forritið er búið til í Eclipse með Java Spring og því þarf að hafa það sett upp til að geta keyrt forritið.
