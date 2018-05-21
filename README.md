@@ -11,9 +11,7 @@ Hægt er að keyra það án Amazon S3 og email server, En til þess að setja i
 fyrir það.
 
 ### Setja upp
-Hægt er að hala niður forritinu á þessari síðu (clone or download)
-Í möppuni fylgi icelandevents.sql skrá sem er með tilbúni gögn fyrir MySql sem er hægt import beint. 
-Í skráinn eru tilbúnni tónleikar og notandi sem hefur Username sem Username og password sem 12345678.
+Hægt er að hala niður forritinu á þessari síðu (clone or download). Í möppuni fylgi icelandevents.sql skrá sem er með tilbúni gögn fyrir MySql sem er hægt import beint. Í skráinn eru tilbúnni tónleikar og notandi sem hefur Username sem Username og password sem 12345678.
 
 ### Myndir
 
