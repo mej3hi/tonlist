@@ -24,7 +24,7 @@ Hægt er að hala niður forritinu á þessari síðu (clone or download). Í m�
 
 ![Alt tag](https://raw.githubusercontent.com/mej3hi/screenshot/master/myndIE4.PNG)
 
-### Höfundar  
+### Höfundar
 Eiríkur Kristinn Hlöðversson  
 Magnús Blöndal Jóhannsson  
 Martin Einar Jensen  
